@@ -1,0 +1,2567 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>马股每日趋势筛选</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 30px; background: #f7f7f7; }
+    h1 { color: #222; }
+    h2 { color: #444; margin-top: 40px; }
+    table { border-collapse: collapse; width: 100%; background: white; }
+    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+    th { background: #333; color: white; cursor: pointer; user-select: none; }
+    th:hover { background: #555; }
+    tr:nth-child(even) { background: #f2f2f2; }
+    .timestamp { color: #888; font-size: 14px; }
+</style>
+
+<script>
+function sortTable(tableId, colIndex, isNumeric) {
+    const table = document.getElementById(tableId);
+    const rows = Array.from(table.querySelectorAll('tr')).slice(1);
+    const asc = table.dataset.sortCol == colIndex ? table.dataset.sortDir !== 'asc' : true;
+    rows.sort((a, b) => {
+        let x = a.cells[colIndex], y = b.cells[colIndex];
+        if (!x || !y) return 0;
+        if (isNumeric) {
+            let xv = parseFloat(x.dataset.sort ?? x.innerText);
+            let yv = parseFloat(y.dataset.sort ?? y.innerText);
+            if (isNaN(xv)) xv = -Infinity;
+            if (isNaN(yv)) yv = -Infinity;
+            return asc ? xv - yv : yv - xv;
+        } else {
+            return asc ? x.innerText.localeCompare(y.innerText) : y.innerText.localeCompare(x.innerText);
+        }
+    });
+    rows.forEach(r => table.appendChild(r));
+    table.dataset.sortCol = colIndex;
+    table.dataset.sortDir = asc ? 'asc' : 'desc';
+}
+</script>
+
+</head>
+<body>
+    <h1>马股每日趋势筛选清单</h1>
+    <p class="timestamp">更新时间: 2026-10-16 14:15</p>
+
+    <div style="background:#f0f0f0; border-left: 6px solid #cc0000; padding: 15px 20px; margin: 20px 0; font-size: 16px;">
+        <strong>📊 今日大盘宽度：</strong>28.0% (292/1042 只股票站上EMA30) — 大盘偏弱，建议保守，减少新仓位
+    </div>
+
+    <h2>🟢 今日触发信号（Entry Signal）— 9 只</h2>
+    <table id="table1">
+        <tr><th onclick="sortTable('table1',0,false)">代码 ⇅</th><th onclick="sortTable('table1',1,false)">公司名称 ⇅</th><th onclick="sortTable('table1',2,false)">行业 ⇅</th><th onclick="sortTable('table1',3,true)">价格 (RM) ⇅</th><th onclick="sortTable('table1',4,true)">市值 (RM) ⇅</th><th onclick="sortTable('table1',5,true)">当日成交额 (RM) ⇅</th><th onclick="sortTable('table1',6,true)">距离EMA30% ⇅</th><th onclick="sortTable('table1',7,false)">行业趋势 ⇅</th></tr>
+        
+        <tr>
+            <td>0262.KL</td>
+            <td>SUNVIEW</td>
+            <td>Renewable Energy</td>
+            <td data-sort="0.4050000011920929">0.41</td>
+            <td data-sort="231100000.0">231.10M</td>
+            <td data-sort="4320378.01271677">4.32M</td>
+            <td data-sort="4.894822723436635">4.89%</td>
+            <td>偏弱/盘整 (7/14)</td>
+            
+        </tr>
+        <tr>
+            <td>0349.KL</td>
+            <td>SUMI</td>
+            <td>Chemicals</td>
+            <td data-sort="0.10000000149011612">0.10</td>
+            <td data-sort="144400000.0">144.40M</td>
+            <td data-sort="61350.00091418624">61,350</td>
+            <td data-sort="4.856773747522896">4.86%</td>
+            <td>偏弱/盘整 (10/24)</td>
+            
+        </tr>
+        <tr>
+            <td>0387.KL</td>
+            <td>GHS</td>
+            <td>Food & Beverages</td>
+            <td data-sort="0.1899999976158142">0.19</td>
+            <td data-sort="90000000.0">90.00M</td>
+            <td data-sort="4369.999945163727">4,370</td>
+            <td data-sort="2.9681874047361925">2.97%</td>
+            <td>偏弱/盘整 (9/49)</td>
+            
+        </tr>
+        <tr>
+            <td>0390.KL</td>
+            <td>ISF</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.8500000238418579">0.85</td>
+            <td data-sort="785000000.0">785.00M</td>
+            <td data-sort="3858490.10822773">3.86M</td>
+            <td data-sort="4.817219270817413">4.82%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>5066.KL</td>
+            <td>NTPM</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.20999999344348907">0.21</td>
+            <td data-sort="230300000.0">230.30M</td>
+            <td data-sort="38534.998796880245">38,535</td>
+            <td data-sort="1.8251917644232656">1.83%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            
+        </tr>
+        <tr>
+            <td>5302.KL</td>
+            <td>ATECH</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.7850000262260437">0.79</td>
+            <td data-sort="1027500000.0">1.03B</td>
+            <td data-sort="1121529.5374691486">1.12M</td>
+            <td data-sort="1.4793009041495764">1.48%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>7053.KL</td>
+            <td>SEEHUP</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="0.6800000071525574">0.68</td>
+            <td data-sort="51900000.0">51.90M</td>
+            <td data-sort="6800.000071525574">6,800</td>
+            <td data-sort="0.966761799181147">0.97%</td>
+            <td>偏弱/盘整 (10/32)</td>
+            
+        </tr>
+        <tr>
+            <td>7176.KL</td>
+            <td>TPC</td>
+            <td>Agricultural Products</td>
+            <td data-sort="0.2750000059604645">0.28</td>
+            <td data-sort="83200000.0">83.20M</td>
+            <td data-sort="2200.000047683716">2,200</td>
+            <td data-sort="1.8907911664709152">1.89%</td>
+            <td>偏弱/盘整 (6/18)</td>
+            
+        </tr>
+        <tr>
+            <td>9237.KL</td>
+            <td>SCIB</td>
+            <td>Building Materials</td>
+            <td data-sort="0.125">0.12</td>
+            <td data-sort="91600000.0">91.60M</td>
+            <td data-sort="213437.5">213,438</td>
+            <td data-sort="5.027603547969127">5.03%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            
+        </tr>
+    </table>
+
+    <h2>🟡 等待突破中（阶段2：回踩支撑）— 123 只</h2>
+    <table id="table2">
+        <tr><th onclick="sortTable('table2',0,false)">代码 ⇅</th><th onclick="sortTable('table2',1,false)">公司名称 ⇅</th><th onclick="sortTable('table2',2,false)">行业 ⇅</th><th onclick="sortTable('table2',3,true)">价格 (RM) ⇅</th><th onclick="sortTable('table2',4,true)">市值 (RM) ⇅</th><th onclick="sortTable('table2',5,true)">当日成交额 (RM) ⇅</th><th onclick="sortTable('table2',6,true)">距离EMA30% ⇅</th><th onclick="sortTable('table2',7,false)">行业趋势 ⇅</th></tr>
+        
+        <tr>
+            <td>0006.KL</td>
+            <td>PINEAPP</td>
+            <td>Digital Services</td>
+            <td data-sort="0.8600000143051147">0.86</td>
+            <td data-sort="41700000.0">41.70M</td>
+            <td data-sort="10320.000171661377">10,320</td>
+            <td data-sort="0.3697641584183585">0.37%</td>
+            <td>偏弱/盘整 (6/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0008.KL</td>
+            <td>WILLOW</td>
+            <td>Software</td>
+            <td data-sort="0.29499998688697815">0.29</td>
+            <td data-sort="141400000.0">141.40M</td>
+            <td data-sort="33629.99850511551">33,630</td>
+            <td data-sort="-0.0378147474050315">-0.04%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>0011.KL</td>
+            <td>BTECH</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="0.27000001072883606">0.27</td>
+            <td data-sort="65500000.0">65.50M</td>
+            <td data-sort="25920.00102996826">25,920</td>
+            <td data-sort="-0.40028034739600893">-0.40%</td>
+            <td>偏弱/盘整 (3/9)</td>
+            
+        </tr>
+        <tr>
+            <td>0020.KL</td>
+            <td>NETX</td>
+            <td>Software</td>
+            <td data-sort="0.04500000178813934">0.05</td>
+            <td data-sort="42200000.0">42.20M</td>
+            <td data-sort="27.000001072883606">27</td>
+            <td data-sort="-7.849378452828253">-7.85%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>0038.KL</td>
+            <td>ARTRONIQ</td>
+            <td>Chemicals</td>
+            <td data-sort="0.13500000536441803">0.14</td>
+            <td data-sort="61400000.0">61.40M</td>
+            <td data-sort="122863.50488215685">122,864</td>
+            <td data-sort="0.6888434836387511">0.69%</td>
+            <td>偏弱/盘整 (10/24)</td>
+            
+        </tr>
+        <tr>
+            <td>0045.KL</td>
+            <td>SSB8</td>
+            <td>Construction</td>
+            <td data-sort="0.6349999904632568">0.63</td>
+            <td data-sort="1409000000.0">1.41B</td>
+            <td data-sort="917765.4862165451">917,765</td>
+            <td data-sort="0.6665124937079252">0.67%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0054.KL</td>
+            <td>KARYON</td>
+            <td>Chemicals</td>
+            <td data-sort="0.14000000059604645">0.14</td>
+            <td data-sort="76100000.0">76.10M</td>
+            <td data-sort="20272.000086307526">20,272</td>
+            <td data-sort="-4.578181346054505">-4.58%</td>
+            <td>偏弱/盘整 (10/24)</td>
+            
+        </tr>
+        <tr>
+            <td>0066.KL</td>
+            <td>VSOLAR</td>
+            <td>Software</td>
+            <td data-sort="0.03500000014901161">0.04</td>
+            <td data-sort="17400000.0">17.40M</td>
+            <td data-sort="1841.0000078380108">1,841</td>
+            <td data-sort="-8.80073230342255">-8.80%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>0072.KL</td>
+            <td>ERDASAN</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.0949999988079071">0.09</td>
+            <td data-sort="24000000.0">24.00M</td>
+            <td data-sort="3448.499956727028">3,448</td>
+            <td data-sort="-2.691870721085788">-2.69%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0097.KL</td>
+            <td>VITROX</td>
+            <td>Semiconductors</td>
+            <td data-sort="10.600000381469727">10.60</td>
+            <td data-sort="17500000000.0">17.50B</td>
+            <td data-sort="33860641.218566895">33.86M</td>
+            <td data-sort="4.346799940831166">4.35%</td>
+            <td>偏弱/盘整 (9/19)</td>
+            
+        </tr>
+        <tr>
+            <td>0111.KL</td>
+            <td>K1</td>
+            <td>Technology Equipment</td>
+            <td data-sort="0.1550000011920929">0.16</td>
+            <td data-sort="116500000.0">116.50M</td>
+            <td data-sort="47368.00036430359">47,368</td>
+            <td data-sort="1.359047049239679">1.36%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0112.KL</td>
+            <td>MIKROMB</td>
+            <td>Technology Equipment</td>
+            <td data-sort="0.6349999904632568">0.63</td>
+            <td data-sort="785400000.0">785.40M</td>
+            <td data-sort="1137665.982913971">1.14M</td>
+            <td data-sort="0.5496237345749149">0.55%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0113.KL</td>
+            <td>MMSV</td>
+            <td>Technology Equipment</td>
+            <td data-sort="0.30000001192092896">0.30</td>
+            <td data-sort="60200000.0">60.20M</td>
+            <td data-sort="95670.00380158424">95,670</td>
+            <td data-sort="1.5645536848112402">1.56%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0119.KL</td>
+            <td>APPASIA</td>
+            <td>Software</td>
+            <td data-sort="0.11500000208616257">0.12</td>
+            <td data-sort="176400000.0">176.40M</td>
+            <td data-sort="114057.00206905603">114,057</td>
+            <td data-sort="-1.840952265368355">-1.84%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>0149.KL</td>
+            <td>FIBON</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.44999998807907104">0.45</td>
+            <td data-sort="45600000.0">45.60M</td>
+            <td data-sort="4274.999886751175">4,275</td>
+            <td data-sort="2.67411081662552">2.67%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0151.KL</td>
+            <td>KGB</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="8.350000381469727">8.35</td>
+            <td data-sort="7228800000.0">7.23B</td>
+            <td data-sort="51216397.33982086">51.22M</td>
+            <td data-sort="-3.574321425165033">-3.57%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            
+        </tr>
+        <tr>
+            <td>0152.KL</td>
+            <td>DGB</td>
+            <td>Software</td>
+            <td data-sort="0.03500000014901161">0.04</td>
+            <td data-sort="9900000.0">9.90M</td>
+            <td data-sort="651.000002771616">651</td>
+            <td data-sort="-0.9003871497591553">-0.90%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>0163.KL</td>
+            <td>CAREPLS</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="0.07999999821186066">0.08</td>
+            <td data-sort="76500000.0">76.50M</td>
+            <td data-sort="68647.99846559763">68,648</td>
+            <td data-sort="-1.074159632671649">-1.07%</td>
+            <td>偏弱/盘整 (6/12)</td>
+            
+        </tr>
+        <tr>
+            <td>0166.KL</td>
+            <td>INARI</td>
+            <td>Semiconductors</td>
+            <td data-sort="2.6600000858306885">2.66</td>
+            <td data-sort="9951300000.0">9.95B</td>
+            <td data-sort="23193870.74840069">23.19M</td>
+            <td data-sort="1.5861011802333596">1.59%</td>
+            <td>偏弱/盘整 (9/19)</td>
+            
+        </tr>
+        <tr>
+            <td>0173.KL</td>
+            <td>CATCHA</td>
+            <td>Media</td>
+            <td data-sort="0.22499999403953552">0.22</td>
+            <td data-sort="97800000.0">97.80M</td>
+            <td data-sort="4522.499880194664">4,522</td>
+            <td data-sort="-0.7347023340526113">-0.73%</td>
+            <td>偏弱/盘整 (1/12)</td>
+            
+        </tr>
+        <tr>
+            <td>0176.KL</td>
+            <td>KRONO</td>
+            <td>Digital Services</td>
+            <td data-sort="0.12999999523162842">0.13</td>
+            <td data-sort="138000000.0">138.00M</td>
+            <td data-sort="103908.9961886406">103,909</td>
+            <td data-sort="-4.388973754812813">-4.39%</td>
+            <td>偏弱/盘整 (6/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0177.KL</td>
+            <td>MIDTOWN</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="0.07999999821186066">0.08</td>
+            <td data-sort="18100000.0">18.10M</td>
+            <td data-sort="479.99998927116394">480</td>
+            <td data-sort="-4.083899274059369">-4.08%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            
+        </tr>
+        <tr>
+            <td>0178.KL</td>
+            <td>SEDANIA</td>
+            <td>Consumer Services</td>
+            <td data-sort="0.10000000149011612">0.10</td>
+            <td data-sort="44900000.0">44.90M</td>
+            <td data-sort="767920.0114428997">767,920</td>
+            <td data-sort="-0.5158753339074355">-0.52%</td>
+            <td>偏弱/盘整 (10/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0181.KL</td>
+            <td>AEMULUS</td>
+            <td>Technology Equipment</td>
+            <td data-sort="0.41999998688697815">0.42</td>
+            <td data-sort="262300000.0">262.30M</td>
+            <td data-sort="1313675.9589850903">1.31M</td>
+            <td data-sort="0.4393837396027259">0.44%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0189.KL</td>
+            <td>MATANG</td>
+            <td>Plantation</td>
+            <td data-sort="0.07000000029802322">0.07</td>
+            <td data-sort="179200000.0">179.20M</td>
+            <td data-sort="5460.0000232458115">5,460</td>
+            <td data-sort="-4.318721982099335">-4.32%</td>
+            <td>偏弱/盘整 (11/40)</td>
+            
+        </tr>
+        <tr>
+            <td>0190.KL</td>
+            <td>ESAFE</td>
+            <td>Auto Parts</td>
+            <td data-sort="0.10499999672174454">0.10</td>
+            <td data-sort="26500000.0">26.50M</td>
+            <td data-sort="2099.9999344348907">2,100</td>
+            <td data-sort="-0.4697528148761585">-0.47%</td>
+            <td>偏弱/盘整 (5/17)</td>
+            
+        </tr>
+        <tr>
+            <td>0196.KL</td>
+            <td>QES</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.5899999737739563">0.59</td>
+            <td data-sort="458800000.0">458.80M</td>
+            <td data-sort="1425026.9366562366">1.43M</td>
+            <td data-sort="-0.40482471932088937">-0.40%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0200.KL</td>
+            <td>REVENUE</td>
+            <td>Digital Services</td>
+            <td data-sort="0.07500000298023224">0.08</td>
+            <td data-sort="45400000.0">45.40M</td>
+            <td data-sort="6187.50024586916">6,188</td>
+            <td data-sort="0.17250084380792063">0.17%</td>
+            <td>偏弱/盘整 (6/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0201.KL</td>
+            <td>NOVA</td>
+            <td>Pharmaceuticals</td>
+            <td data-sort="0.3700000047683716">0.37</td>
+            <td data-sort="111600000.0">111.60M</td>
+            <td data-sort="5994.00007724762">5,994</td>
+            <td data-sort="0.7972253414867566">0.80%</td>
+            <td>偏弱/盘整 (1/5)</td>
+            
+        </tr>
+        <tr>
+            <td>0205.KL</td>
+            <td>DPIH</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.10499999672174454">0.10</td>
+            <td data-sort="76700000.0">76.70M</td>
+            <td data-sort="1417.4999557435513">1,417</td>
+            <td data-sort="-2.201675132916908">-2.20%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            
+        </tr>
+        <tr>
+            <td>0215.KL</td>
+            <td>SLVEST</td>
+            <td>Renewable Energy</td>
+            <td data-sort="3.9200000762939453">3.92</td>
+            <td data-sort="3201200000.0">3.20B</td>
+            <td data-sort="49758128.968429565">49.76M</td>
+            <td data-sort="1.868032130342985">1.87%</td>
+            <td>偏弱/盘整 (7/14)</td>
+            
+        </tr>
+        <tr>
+            <td>0217.KL</td>
+            <td>PWRWELL</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="1.159999966621399">1.16</td>
+            <td data-sort="609600000.0">609.60M</td>
+            <td data-sort="1726659.9503159523">1.73M</td>
+            <td data-sort="1.8983660201045132">1.90%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0221.KL</td>
+            <td>TCS</td>
+            <td>Construction</td>
+            <td data-sort="0.07999999821186066">0.08</td>
+            <td data-sort="52900000.0">52.90M</td>
+            <td data-sort="111935.99749803543">111,936</td>
+            <td data-sort="-4.943571875743027">-4.94%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0227.KL</td>
+            <td>EFRAME</td>
+            <td>Building Materials</td>
+            <td data-sort="0.25">0.25</td>
+            <td data-sort="93200000.0">93.20M</td>
+            <td data-sort="1000.0">1,000</td>
+            <td data-sort="-0.2679752602640101">-0.27%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            
+        </tr>
+        <tr>
+            <td>0233.KL</td>
+            <td>PEKAT</td>
+            <td>Renewable Energy</td>
+            <td data-sort="2.759999990463257">2.76</td>
+            <td data-sort="1461600000.0">1.46B</td>
+            <td data-sort="8839175.969457626">8.84M</td>
+            <td data-sort="8.182968099817737">8.18%</td>
+            <td>偏弱/盘整 (7/14)</td>
+            
+        </tr>
+        <tr>
+            <td>0241.KL</td>
+            <td>TAGHILL</td>
+            <td>Construction</td>
+            <td data-sort="0.06499999761581421">0.06</td>
+            <td data-sort="101200000.0">101.20M</td>
+            <td data-sort="1949.9999284744263">1,950</td>
+            <td data-sort="-0.7645755563366972">-0.76%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0245.KL</td>
+            <td>MNHLDG</td>
+            <td>Construction</td>
+            <td data-sort="3.8299999237060547">3.83</td>
+            <td data-sort="2500500000.0">2.50B</td>
+            <td data-sort="21932494.563102722">21.93M</td>
+            <td data-sort="0.9949303373731332">0.99%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0273.KL</td>
+            <td>VLB</td>
+            <td>Construction</td>
+            <td data-sort="0.9200000166893005">0.92</td>
+            <td data-sort="955600000.0">955.60M</td>
+            <td data-sort="1469976.0266661644">1.47M</td>
+            <td data-sort="1.9933827434720046">1.99%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0277.KL</td>
+            <td>CLOUDPT</td>
+            <td>Digital Services</td>
+            <td data-sort="0.4950000047683716">0.50</td>
+            <td data-sort="249900000.0">249.90M</td>
+            <td data-sort="787248.0075836182">787,248</td>
+            <td data-sort="1.292786342809684">1.29%</td>
+            <td>偏弱/盘整 (6/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0291.KL</td>
+            <td>CHB</td>
+            <td>Industrial Services</td>
+            <td data-sort="2.509999990463257">2.51</td>
+            <td data-sort="840100000.0">840.10M</td>
+            <td data-sort="1976122.992491722">1.98M</td>
+            <td data-sort="3.255669127851938">3.26%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0292.KL</td>
+            <td>JTGROUP</td>
+            <td>Construction</td>
+            <td data-sort="1.190000057220459">1.19</td>
+            <td data-sort="423000000.0">423.00M</td>
+            <td data-sort="1595076.0766983032">1.60M</td>
+            <td data-sort="0.13123291924818167">0.13%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0296.KL</td>
+            <td>HEGROUP</td>
+            <td>Industrial Services</td>
+            <td data-sort="1.0199999809265137">1.02</td>
+            <td data-sort="418000000.0">418.00M</td>
+            <td data-sort="2447999.954223633">2.45M</td>
+            <td data-sort="0.5944749663665818">0.59%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0300.KL</td>
+            <td>SBH</td>
+            <td>Agricultural Products</td>
+            <td data-sort="0.16500000655651093">0.17</td>
+            <td data-sort="155400000.0">155.40M</td>
+            <td data-sort="7639.500303566456">7,640</td>
+            <td data-sort="-3.0590515128071836">-3.06%</td>
+            <td>偏弱/盘整 (6/18)</td>
+            
+        </tr>
+        <tr>
+            <td>0310.KL</td>
+            <td>UUE</td>
+            <td>Construction</td>
+            <td data-sort="0.75">0.75</td>
+            <td data-sort="584000000.0">584.00M</td>
+            <td data-sort="2011350.0">2.01M</td>
+            <td data-sort="4.103262919561233">4.10%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0322.KL</td>
+            <td>KHB</td>
+            <td>Auto Parts</td>
+            <td data-sort="0.08500000089406967">0.09</td>
+            <td data-sort="36200000.0">36.20M</td>
+            <td data-sort="22295.500234514475">22,296</td>
+            <td data-sort="-3.3143098112449474">-3.31%</td>
+            <td>偏弱/盘整 (5/17)</td>
+            
+        </tr>
+        <tr>
+            <td>0330.KL</td>
+            <td>SUPREME</td>
+            <td>Consumer Services</td>
+            <td data-sort="0.1850000023841858">0.19</td>
+            <td data-sort="81700000.0">81.70M</td>
+            <td data-sort="11562.500149011612">11,563</td>
+            <td data-sort="-4.880610563553011">-4.88%</td>
+            <td>偏弱/盘整 (10/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0336.KL</td>
+            <td>WINSTAR</td>
+            <td>Metals</td>
+            <td data-sort="0.6349999904632568">0.63</td>
+            <td data-sort="204400000.0">204.40M</td>
+            <td data-sort="34416.99948310852">34,417</td>
+            <td data-sort="-0.8305528271270404">-0.83%</td>
+            <td>偏弱/盘整 (12/47)</td>
+            
+        </tr>
+        <tr>
+            <td>0337.KL</td>
+            <td>SET</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.23999999463558197">0.24</td>
+            <td data-sort="240200000.0">240.20M</td>
+            <td data-sort="418679.99064177275">418,680</td>
+            <td data-sort="0.3229940646643815">0.32%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0339.KL</td>
+            <td>CBHB</td>
+            <td>Industrial Services</td>
+            <td data-sort="1.0099999904632568">1.01</td>
+            <td data-sort="1880900000.0">1.88B</td>
+            <td data-sort="7301390.93105793">7.30M</td>
+            <td data-sort="-1.9003408575672305">-1.90%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0342.KL</td>
+            <td>RTECH</td>
+            <td>Consumer Services</td>
+            <td data-sort="0.23499999940395355">0.23</td>
+            <td data-sort="46600000.0">46.60M</td>
+            <td data-sort="64530.999836325645">64,531</td>
+            <td data-sort="1.1112541916778482">1.11%</td>
+            <td>偏弱/盘整 (10/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0353.KL</td>
+            <td>WESTRVR</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.4050000011920929">0.41</td>
+            <td data-sort="132300000.00000001">132.30M</td>
+            <td data-sort="324931.50095641613">324,932</td>
+            <td data-sort="0.38862788893004196">0.39%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0367.KL</td>
+            <td>ENPRO</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="0.2549999952316284">0.25</td>
+            <td data-sort="220500000.0">220.50M</td>
+            <td data-sort="94426.498234272">94,426</td>
+            <td data-sort="-1.1484424177084451">-1.15%</td>
+            <td>偏弱/盘整 (6/26)</td>
+            
+        </tr>
+        <tr>
+            <td>0373.KL</td>
+            <td>VERDANT</td>
+            <td>Renewable Energy</td>
+            <td data-sort="0.23499999940395355">0.23</td>
+            <td data-sort="167600000.0">167.60M</td>
+            <td data-sort="197117.99950003624">197,118</td>
+            <td data-sort="-2.1420550816353083">-2.14%</td>
+            <td>偏弱/盘整 (7/14)</td>
+            
+        </tr>
+        <tr>
+            <td>0375.KL</td>
+            <td>THMY</td>
+            <td>Technology Equipment</td>
+            <td data-sort="2.130000114440918">2.13</td>
+            <td data-sort="1509600000.0">1.51B</td>
+            <td data-sort="5053851.271533966">5.05M</td>
+            <td data-sort="2.8392213814644762">2.84%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0378.KL</td>
+            <td>FAMIERA</td>
+            <td>Agricultural Products</td>
+            <td data-sort="0.2150000035762787">0.22</td>
+            <td data-sort="94500000.0">94.50M</td>
+            <td data-sort="13265.500220656395">13,266</td>
+            <td data-sort="-0.8130495041842416">-0.81%</td>
+            <td>偏弱/盘整 (6/18)</td>
+            
+        </tr>
+        <tr>
+            <td>0379.KL</td>
+            <td>PMW</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.2800000011920929">0.28</td>
+            <td data-sort="236400000.0">236.40M</td>
+            <td data-sort="67200.0002861023">67,200</td>
+            <td data-sort="1.0158292852614008">1.02%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0381.KL</td>
+            <td>POLYMER</td>
+            <td>Chemicals</td>
+            <td data-sort="0.1850000023841858">0.19</td>
+            <td data-sort="109200000.0">109.20M</td>
+            <td data-sort="432326.5055716038">432,327</td>
+            <td data-sort="-2.4745609855229453">-2.47%</td>
+            <td>偏弱/盘整 (10/24)</td>
+            
+        </tr>
+        <tr>
+            <td>0383.KL</td>
+            <td>PSP</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.13500000536441803">0.14</td>
+            <td data-sort="149600000.0">149.60M</td>
+            <td data-sort="2160.0000858306885">2,160</td>
+            <td data-sort="-2.1860865907535127">-2.19%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0385.KL</td>
+            <td>BMS</td>
+            <td>Retailers</td>
+            <td data-sort="0.125">0.12</td>
+            <td data-sort="207900000.0">207.90M</td>
+            <td data-sort="12050.0">12,050</td>
+            <td data-sort="-4.793148705852487">-4.79%</td>
+            <td>偏弱/盘整 (4/24)</td>
+            
+        </tr>
+        <tr>
+            <td>0389.KL</td>
+            <td>OGM</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.14499999582767487">0.14</td>
+            <td data-sort="43400000.0">43.40M</td>
+            <td data-sort="49807.49856680632">49,807</td>
+            <td data-sort="0.8060216602711751">0.81%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0392.KL</td>
+            <td>KEEMING</td>
+            <td>Industrial Services</td>
+            <td data-sort="2.5199999809265137">2.52</td>
+            <td data-sort="770300000.0">770.30M</td>
+            <td data-sort="1034711.9921684265">1.03M</td>
+            <td data-sort="-0.7053695545972682">-0.71%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0453.KL</td>
+            <td>EIPOWER</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.8949999809265137">0.89</td>
+            <td data-sort="560000000.0">560.00M</td>
+            <td data-sort="5666513.379240036">5.67M</td>
+            <td data-sort="-1.9751564999055036">-1.98%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0457.KL</td>
+            <td>PENTECH</td>
+            <td>Digital Services</td>
+            <td data-sort="0.3400000035762787">0.34</td>
+            <td data-sort="210800000.0">210.80M</td>
+            <td data-sort="2778310.0292235613">2.78M</td>
+            <td data-sort="-0.8537484839768756">-0.85%</td>
+            <td>偏弱/盘整 (6/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0459.KL</td>
+            <td>SUM</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.7599999904632568">0.76</td>
+            <td data-sort="288000000.0">288.00M</td>
+            <td data-sort="1456539.9817228317">1.46M</td>
+            <td data-sort="2.9191884011384386">2.92%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>1287.KL</td>
+            <td>EXSIMHB</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="0.4950000047683716">0.50</td>
+            <td data-sort="1172700000.0">1.17B</td>
+            <td data-sort="706909.5068097115">706,910</td>
+            <td data-sort="0.24232735419981172">0.24%</td>
+            <td>偏弱/盘整 (8/31)</td>
+            
+        </tr>
+        <tr>
+            <td>2143.KL</td>
+            <td>ECM</td>
+            <td>Other Financials</td>
+            <td data-sort="0.20999999344348907">0.21</td>
+            <td data-sort="101500000.0">101.50M</td>
+            <td data-sort="377.99998819828033">378</td>
+            <td data-sort="-0.7504818978090658">-0.75%</td>
+            <td>偏弱/盘整 (3/18)</td>
+            
+        </tr>
+        <tr>
+            <td>2607.KL</td>
+            <td>INCKEN</td>
+            <td>Plantation</td>
+            <td data-sort="0.47999998927116394">0.48</td>
+            <td data-sort="197800000.0">197.80M</td>
+            <td data-sort="1439.9999678134918">1,440</td>
+            <td data-sort="-1.138741039077529">-1.14%</td>
+            <td>偏弱/盘整 (11/40)</td>
+            
+        </tr>
+        <tr>
+            <td>2755.KL</td>
+            <td>FCW</td>
+            <td>Houshold Goods</td>
+            <td data-sort="1.7000000476837158">1.70</td>
+            <td data-sort="425000000.0">425.00M</td>
+            <td data-sort="1020.0000286102295">1,020</td>
+            <td data-sort="-0.17960759615820607">-0.18%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            
+        </tr>
+        <tr>
+            <td>3298.KL</td>
+            <td>HEXZA</td>
+            <td>Chemicals</td>
+            <td data-sort="1.0700000524520874">1.07</td>
+            <td data-sort="224100000.0">224.10M</td>
+            <td data-sort="32956.00161552429">32,956</td>
+            <td data-sort="0.30046115380532323">0.30%</td>
+            <td>偏弱/盘整 (10/24)</td>
+            
+        </tr>
+        <tr>
+            <td>4634.KL</td>
+            <td>POS</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="0.24500000476837158">0.25</td>
+            <td data-sort="207400000.0">207.40M</td>
+            <td data-sort="51205.00099658966">51,205</td>
+            <td data-sort="-1.8993291337244766">-1.90%</td>
+            <td>偏弱/盘整 (10/32)</td>
+            
+        </tr>
+        <tr>
+            <td>5005.KL</td>
+            <td>UNISEM</td>
+            <td>Semiconductors</td>
+            <td data-sort="4.230000019073486">4.23</td>
+            <td data-sort="7150400000.0">7.15B</td>
+            <td data-sort="7545474.034023285">7.55M</td>
+            <td data-sort="-2.096173439428742">-2.10%</td>
+            <td>偏弱/盘整 (9/19)</td>
+            
+        </tr>
+        <tr>
+            <td>5009.KL</td>
+            <td>WTHORSE</td>
+            <td>Building Materials</td>
+            <td data-sort="0.48500001430511475">0.49</td>
+            <td data-sort="121200000.0">121.20M</td>
+            <td data-sort="11882.500350475311">11,883</td>
+            <td data-sort="0.8733178919333725">0.87%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            
+        </tr>
+        <tr>
+            <td>5010.KL</td>
+            <td>TONGHER</td>
+            <td>Metals</td>
+            <td data-sort="2.450000047683716">2.45</td>
+            <td data-sort="384100000.0">384.10M</td>
+            <td data-sort="17640.000343322754">17,640</td>
+            <td data-sort="1.828259863822413">1.83%</td>
+            <td>偏弱/盘整 (12/47)</td>
+            
+        </tr>
+        <tr>
+            <td>5022.KL</td>
+            <td>PAOS</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.26499998569488525">0.26</td>
+            <td data-sort="50700000.0">50.70M</td>
+            <td data-sort="1218.9999341964722">1,219</td>
+            <td data-sort="0.9098499620812942">0.91%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            
+        </tr>
+        <tr>
+            <td>5054.KL</td>
+            <td>TRC</td>
+            <td>Construction</td>
+            <td data-sort="0.3050000071525574">0.31</td>
+            <td data-sort="149000000.0">149.00M</td>
+            <td data-sort="15250.000357627869">15,250</td>
+            <td data-sort="0.7194429747072905">0.72%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>5065.KL</td>
+            <td>ORNA</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.7099999785423279">0.71</td>
+            <td data-sort="52700000.0">52.70M</td>
+            <td data-sort="2058.999937772751">2,059</td>
+            <td data-sort="0.9322081685408258">0.93%</td>
+            <td>偏弱/盘整 (5/20)</td>
+            
+        </tr>
+        <tr>
+            <td>5078.KL</td>
+            <td>M&G</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="0.3100000023841858">0.31</td>
+            <td data-sort="247300000.0">247.30M</td>
+            <td data-sort="6023145.046323538">6.02M</td>
+            <td data-sort="1.3103188968142336">1.31%</td>
+            <td>偏弱/盘整 (10/32)</td>
+            
+        </tr>
+        <tr>
+            <td>5135.KL</td>
+            <td>SWKPLNT</td>
+            <td>Plantation</td>
+            <td data-sort="4.329999923706055">4.33</td>
+            <td data-sort="1316000000.0">1.32B</td>
+            <td data-sort="266727.99530029297">266,728</td>
+            <td data-sort="-2.3781302459751723">-2.38%</td>
+            <td>偏弱/盘整 (11/40)</td>
+            
+        </tr>
+        <tr>
+            <td>5145.KL</td>
+            <td>SEALINK</td>
+            <td>Transportation Equipment</td>
+            <td data-sort="0.32499998807907104">0.32</td>
+            <td data-sort="157500000.0">157.50M</td>
+            <td data-sort="213167.4921810627">213,167</td>
+            <td data-sort="1.2421810283193666">1.24%</td>
+            <td>偏弱/盘整 (1/2)</td>
+            
+        </tr>
+        <tr>
+            <td>5157.KL</td>
+            <td>SG</td>
+            <td>Food & Beverages</td>
+            <td data-sort="0.07000000029802322">0.07</td>
+            <td data-sort="11700000.0">11.70M</td>
+            <td data-sort="147.00000062584877">147</td>
+            <td data-sort="-4.412982901279215">-4.41%</td>
+            <td>偏弱/盘整 (9/49)</td>
+            
+        </tr>
+        <tr>
+            <td>5161.KL</td>
+            <td>JCY</td>
+            <td>Technology Equipment</td>
+            <td data-sort="0.5550000071525574">0.56</td>
+            <td data-sort="1102600000.0">1.10B</td>
+            <td data-sort="6514257.083952427">6.51M</td>
+            <td data-sort="-1.174473975260106">-1.17%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            
+        </tr>
+        <tr>
+            <td>5172.KL</td>
+            <td>SINARAN</td>
+            <td>Construction</td>
+            <td data-sort="0.11500000208616257">0.12</td>
+            <td data-sort="115600000.0">115.60M</td>
+            <td data-sort="11960.000216960907">11,960</td>
+            <td data-sort="3.6888341270189944">3.69%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>5195.KL</td>
+            <td>CENSOF</td>
+            <td>Software</td>
+            <td data-sort="0.2150000035762787">0.22</td>
+            <td data-sort="116000000.0">116.00M</td>
+            <td data-sort="451607.5075119734">451,608</td>
+            <td data-sort="-0.18219707777741642">-0.18%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>5209.KL</td>
+            <td>GASMSIA</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="5.179999828338623">5.18</td>
+            <td data-sort="6317300000.0">6.32B</td>
+            <td data-sort="3816623.8735198975">3.82M</td>
+            <td data-sort="1.6432906724380671">1.64%</td>
+            <td>偏弱/盘整 (3/9)</td>
+            
+        </tr>
+        <tr>
+            <td>5216.KL</td>
+            <td>NEXG</td>
+            <td>Digital Services</td>
+            <td data-sort="0.2849999964237213">0.28</td>
+            <td data-sort="1039400000.0000001">1.04B</td>
+            <td data-sort="879395.9889650345">879,396</td>
+            <td data-sort="-1.3947336014645682">-1.39%</td>
+            <td>偏弱/盘整 (6/28)</td>
+            
+        </tr>
+        <tr>
+            <td>5253.KL</td>
+            <td>ECONBHD</td>
+            <td>Construction</td>
+            <td data-sort="0.125">0.12</td>
+            <td data-sort="170100000.0">170.10M</td>
+            <td data-sort="64887.5">64,888</td>
+            <td data-sort="1.6725817619575374">1.67%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>5272.KL</td>
+            <td>RANHILL</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="3.140000104904175">3.14</td>
+            <td data-sort="3682900000.0">3.68B</td>
+            <td data-sort="5729558.191418648">5.73M</td>
+            <td data-sort="1.9315440561161892">1.93%</td>
+            <td>偏弱/盘整 (3/9)</td>
+            
+        </tr>
+        <tr>
+            <td>5277.KL</td>
+            <td>FPGROUP</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.38999998569488525">0.39</td>
+            <td data-sort="216600000.0">216.60M</td>
+            <td data-sort="218945.99196910858">218,946</td>
+            <td data-sort="-4.701741457400386">-4.70%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>5317.KL</td>
+            <td>CPETECH</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="1.3200000524520874">1.32</td>
+            <td data-sort="845900000.0">845.90M</td>
+            <td data-sort="7070712.280964851">7.07M</td>
+            <td data-sort="4.207195916933767">4.21%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>5398.KL</td>
+            <td>GAMUDA</td>
+            <td>Construction</td>
+            <td data-sort="4.800000190734863">4.80</td>
+            <td data-sort="29200000000.0">29.20B</td>
+            <td data-sort="90035043.57767105">90.04M</td>
+            <td data-sort="-1.1751828593568774">-1.18%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>5555.KL</td>
+            <td>SUNMED</td>
+            <td>Health Care Providers</td>
+            <td data-sort="2.0999999046325684">2.10</td>
+            <td data-sort="24400000000.0">24.40B</td>
+            <td data-sort="9286199.578285217">9.29M</td>
+            <td data-sort="-0.17061488618404627">-0.17%</td>
+            <td>偏弱/盘整 (5/12)</td>
+            
+        </tr>
+        <tr>
+            <td>5592.KL</td>
+            <td>GCE</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="0.4000000059604645">0.40</td>
+            <td data-sort="62100000.0">62.10M</td>
+            <td data-sort="880.0000131130219">880</td>
+            <td data-sort="5.671030822288398">5.67%</td>
+            <td>偏弱/盘整 (8/31)</td>
+            
+        </tr>
+        <tr>
+            <td>7016.KL</td>
+            <td>CHUAN</td>
+            <td>Building Materials</td>
+            <td data-sort="0.30000001192092896">0.30</td>
+            <td data-sort="46400000.0">46.40M</td>
+            <td data-sort="300.00001192092896">300</td>
+            <td data-sort="2.2390297312001888">2.24%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            
+        </tr>
+        <tr>
+            <td>7017.KL</td>
+            <td>KOMARK</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.06499999761581421">0.06</td>
+            <td data-sort="15000000.0">15.00M</td>
+            <td data-sort="6512.999761104584">6,513</td>
+            <td data-sort="-0.05862077052822596">-0.06%</td>
+            <td>偏弱/盘整 (5/20)</td>
+            
+        </tr>
+        <tr>
+            <td>7018.KL</td>
+            <td>CME</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.009999999776482582">0.01</td>
+            <td data-sort="6000000.0">6.00M</td>
+            <td data-sort="8699.999805539846">8,700</td>
+            <td data-sort="0.1772522834995736">0.18%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            
+        </tr>
+        <tr>
+            <td>7020.KL</td>
+            <td>ASTEEL</td>
+            <td>Metals</td>
+            <td data-sort="0.10000000149011612">0.10</td>
+            <td data-sort="45900000.0">45.90M</td>
+            <td data-sort="507230.007558316">507,230</td>
+            <td data-sort="6.298934054537188">6.30%</td>
+            <td>偏弱/盘整 (12/47)</td>
+            
+        </tr>
+        <tr>
+            <td>7025.KL</td>
+            <td>WOODLAN</td>
+            <td>Wood & Wood Products</td>
+            <td data-sort="0.6000000238418579">0.60</td>
+            <td data-sort="24000000.0">24.00M</td>
+            <td data-sort="1260.0000500679016">1,260</td>
+            <td data-sort="0.23575529801665346">0.24%</td>
+            <td>偏弱/盘整 (5/16)</td>
+            
+        </tr>
+        <tr>
+            <td>7070.KL</td>
+            <td>VIZIONE</td>
+            <td>Construction</td>
+            <td data-sort="0.10000000149011612">0.10</td>
+            <td data-sort="49700000.0">49.70M</td>
+            <td data-sort="2600.000038743019">2,600</td>
+            <td data-sort="-1.628080945273981">-1.63%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>7096.KL</td>
+            <td>JOE</td>
+            <td>Auto Parts</td>
+            <td data-sort="0.06499999761581421">0.06</td>
+            <td data-sort="19900000.0">19.90M</td>
+            <td data-sort="6.499999761581421">6</td>
+            <td data-sort="0.9568246285304661">0.96%</td>
+            <td>偏弱/盘整 (5/17)</td>
+            
+        </tr>
+        <tr>
+            <td>7140.KL</td>
+            <td>OKA</td>
+            <td>Building Materials</td>
+            <td data-sort="0.5199999809265137">0.52</td>
+            <td data-sort="127600000.0">127.60M</td>
+            <td data-sort="207.99999237060547">208</td>
+            <td data-sort="-0.14619704512700096">-0.15%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            
+        </tr>
+        <tr>
+            <td>7145.KL</td>
+            <td>TXCD</td>
+            <td>Construction</td>
+            <td data-sort="0.1899999976158142">0.19</td>
+            <td data-sort="62300000.0">62.30M</td>
+            <td data-sort="53883.99932384491">53,884</td>
+            <td data-sort="-0.14356768230715994">-0.14%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>7155.KL</td>
+            <td>SKPRES</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.3499999940395355">0.35</td>
+            <td data-sort="500100000.0">500.10M</td>
+            <td data-sort="1311694.9776619673">1.31M</td>
+            <td data-sort="-0.3045524187934631">-0.30%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>7157.KL</td>
+            <td>CYL</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.30000001192092896">0.30</td>
+            <td data-sort="28500000.0">28.50M</td>
+            <td data-sort="1500.0000596046448">1,500</td>
+            <td data-sort="-1.5823520892818368">-1.58%</td>
+            <td>偏弱/盘整 (5/20)</td>
+            
+        </tr>
+        <tr>
+            <td>7160.KL</td>
+            <td>PENTA</td>
+            <td>Technology Equipment</td>
+            <td data-sort="5.599999904632568">5.60</td>
+            <td data-sort="3639900000.0">3.64B</td>
+            <td data-sort="32264959.450531006">32.26M</td>
+            <td data-sort="2.6823897181137073">2.68%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            
+        </tr>
+        <tr>
+            <td>7168.KL</td>
+            <td>PRG</td>
+            <td>Personal Goods</td>
+            <td data-sort="0.10000000149011612">0.10</td>
+            <td data-sort="31900000.0">31.90M</td>
+            <td data-sort="70200.00104606152">70,200</td>
+            <td data-sort="0.17036735361529148">0.17%</td>
+            <td>偏弱/盘整 (4/24)</td>
+            
+        </tr>
+        <tr>
+            <td>7174.KL</td>
+            <td>CAB</td>
+            <td>Agricultural Products</td>
+            <td data-sort="0.5649999976158142">0.56</td>
+            <td data-sort="382500000.0">382.50M</td>
+            <td data-sort="309280.9986948967">309,281</td>
+            <td data-sort="-0.7341743377636923">-0.73%</td>
+            <td>偏弱/盘整 (6/18)</td>
+            
+        </tr>
+        <tr>
+            <td>7191.KL</td>
+            <td>ADVENTA</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="0.15000000596046448">0.15</td>
+            <td data-sort="45800000.0">45.80M</td>
+            <td data-sort="65130.002588033676">65,130</td>
+            <td data-sort="4.597315512806353">4.60%</td>
+            <td>偏弱/盘整 (6/12)</td>
+            
+        </tr>
+        <tr>
+            <td>7200.KL</td>
+            <td>TEKSENG</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.25">0.25</td>
+            <td data-sort="86600000.0">86.60M</td>
+            <td data-sort="1925.0">1,925</td>
+            <td data-sort="-2.2355719445116176">-2.24%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            
+        </tr>
+        <tr>
+            <td>7209.KL</td>
+            <td>CHEETAH</td>
+            <td>Personal Goods</td>
+            <td data-sort="0.11500000208616257">0.12</td>
+            <td data-sort="53500000.0">53.50M</td>
+            <td data-sort="1150.0000208616257">1,150</td>
+            <td data-sort="-0.8974640236509435">-0.90%</td>
+            <td>偏弱/盘整 (4/24)</td>
+            
+        </tr>
+        <tr>
+            <td>7211.KL</td>
+            <td>TAFI</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.6449999809265137">0.64</td>
+            <td data-sort="263700000.0">263.70M</td>
+            <td data-sort="21220.4993724823">21,220</td>
+            <td data-sort="-1.2390259726845372">-1.24%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            
+        </tr>
+        <tr>
+            <td>7218.KL</td>
+            <td>ARKA</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="0.4050000011920929">0.41</td>
+            <td data-sort="28300000.0">28.30M</td>
+            <td data-sort="6480.000019073486">6,480</td>
+            <td data-sort="-5.820740623105043">-5.82%</td>
+            <td>偏弱/盘整 (10/32)</td>
+            
+        </tr>
+        <tr>
+            <td>7233.KL</td>
+            <td>DUFU</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="3.069999933242798">3.07</td>
+            <td data-sort="1443600000.0">1.44B</td>
+            <td data-sort="7919064.827799797">7.92M</td>
+            <td data-sort="3.546783400957143">3.55%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>7248.KL</td>
+            <td>SLP</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.8550000190734863">0.86</td>
+            <td data-sort="275800000.0">275.80M</td>
+            <td data-sort="6840.000152587891">6,840</td>
+            <td data-sort="-0.09824625469754811">-0.10%</td>
+            <td>偏弱/盘整 (5/20)</td>
+            
+        </tr>
+        <tr>
+            <td>7609.KL</td>
+            <td>AJIYA</td>
+            <td>Building Materials</td>
+            <td data-sort="1.0">1.00</td>
+            <td data-sort="593900000.0">593.90M</td>
+            <td data-sort="2900.0">2,900</td>
+            <td data-sort="-0.9451159072413364">-0.95%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            
+        </tr>
+        <tr>
+            <td>7668.KL</td>
+            <td>BESHOM</td>
+            <td>Retailers</td>
+            <td data-sort="0.5299999713897705">0.53</td>
+            <td data-sort="165100000.0">165.10M</td>
+            <td data-sort="36198.998045921326">36,199</td>
+            <td data-sort="-1.3814196857937828">-1.38%</td>
+            <td>偏弱/盘整 (4/24)</td>
+            
+        </tr>
+        <tr>
+            <td>8303.KL</td>
+            <td>LOTUS</td>
+            <td>Food & Beverages</td>
+            <td data-sort="0.08500000089406967">0.09</td>
+            <td data-sort="115500000.0">115.50M</td>
+            <td data-sort="8500.000089406967">8,500</td>
+            <td data-sort="-4.006784368950192">-4.01%</td>
+            <td>偏弱/盘整 (9/49)</td>
+            
+        </tr>
+        <tr>
+            <td>8311.KL</td>
+            <td>PESONA</td>
+            <td>Construction</td>
+            <td data-sort="0.4650000035762787">0.47</td>
+            <td data-sort="333600000.0">333.60M</td>
+            <td data-sort="154752.00119018555">154,752</td>
+            <td data-sort="-0.32647569334268356">-0.33%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>8443.KL</td>
+            <td>HIL</td>
+            <td>Chemicals</td>
+            <td data-sort="0.6499999761581421">0.65</td>
+            <td data-sort="217100000.0">217.10M</td>
+            <td data-sort="2014.9999260902405">2,015</td>
+            <td data-sort="-1.0287885483900918">-1.03%</td>
+            <td>偏弱/盘整 (10/24)</td>
+            
+        </tr>
+        <tr>
+            <td>8591.KL</td>
+            <td>CRESBLD</td>
+            <td>Construction</td>
+            <td data-sort="0.4650000035762787">0.47</td>
+            <td data-sort="99000000.0">99.00M</td>
+            <td data-sort="2790.000021457672">2,790</td>
+            <td data-sort="1.1982524060238104">1.20%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>8893.KL</td>
+            <td>MKLAND</td>
+            <td>Property</td>
+            <td data-sort="0.17000000178813934">0.17</td>
+            <td data-sort="175100000.0">175.10M</td>
+            <td data-sort="140760.00148057938">140,760</td>
+            <td data-sort="4.119127867529473">4.12%</td>
+            <td>偏弱/盘整 (21/97)</td>
+            
+        </tr>
+        <tr>
+            <td>9261.KL</td>
+            <td>GADANG</td>
+            <td>Construction</td>
+            <td data-sort="0.1550000011920929">0.16</td>
+            <td data-sort="120100000.0">120.10M</td>
+            <td data-sort="19096.000146865845">19,096</td>
+            <td data-sort="-0.5532837657965404">-0.55%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            
+        </tr>
+        <tr>
+            <td>9822.KL</td>
+            <td>SAM</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="4.099999904632568">4.10</td>
+            <td data-sort="2809500000.0">2.81B</td>
+            <td data-sort="1061899.9752998352">1.06M</td>
+            <td data-sort="-1.7729175086300886">-1.77%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            
+        </tr>
+        <tr>
+            <td>9997.KL</td>
+            <td>PENSONI</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.4300000071525574">0.43</td>
+            <td data-sort="64500000.0">64.50M</td>
+            <td data-sort="43.00000071525574">43</td>
+            <td data-sort="-0.15790828321681763">-0.16%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            
+        </tr>
+    </table>
+
+    <h2>🔵 近期已突破（过去10天内触发过）— 95 只</h2>
+    <table id="table3">
+        <tr><th onclick="sortTable('table3',0,false)">代码 ⇅</th><th onclick="sortTable('table3',1,false)">公司名称 ⇅</th><th onclick="sortTable('table3',2,false)">行业 ⇅</th><th onclick="sortTable('table3',3,true)">价格 (RM) ⇅</th><th onclick="sortTable('table3',4,true)">市值 (RM) ⇅</th><th onclick="sortTable('table3',5,true)">当日成交额 (RM) ⇅</th><th onclick="sortTable('table3',6,true)">距离EMA30% ⇅</th><th onclick="sortTable('table3',7,false)">行业趋势 ⇅</th><th onclick="sortTable('table3',8,false)">突破日期 ⇅</th><th onclick="sortTable('table3',9,true)">距今 ⇅</th><th onclick="sortTable('table3',10,true)">突破后涨跌% ⇅</th></tr>
+        
+        <tr>
+            <td>0028.KL</td>
+            <td>SCOPE</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.07500000298023224">0.08</td>
+            <td data-sort="98200000.0">98.20M</td>
+            <td data-sort="712.5000283122063">713</td>
+            <td data-sort="-8.748232062257298">-8.75%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="7">7天前</td><td data-sort="-11.764703304297399">-11.76%</td>
+        </tr>
+        <tr>
+            <td>0048.KL</td>
+            <td>ANCOMLB</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="0.0949999988079071">0.09</td>
+            <td data-sort="47300000.0">47.30M</td>
+            <td data-sort="17384.999781847">17,385</td>
+            <td data-sort="10.616864690457811">10.62%</td>
+            <td>偏弱/盘整 (10/32)</td>
+            <td data-sort="20261015">2026-10-15</td><td data-sort="1">1天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>0099.KL</td>
+            <td>SCICOM</td>
+            <td>Industrial Services</td>
+            <td data-sort="2.0899999141693115">2.09</td>
+            <td data-sort="789100000.0">789.10M</td>
+            <td data-sort="1841080.9243917465">1.84M</td>
+            <td data-sort="-5.788368046194571">-5.79%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="9">9天前</td><td data-sort="-10.300429931130797">-10.30%</td>
+        </tr>
+        <tr>
+            <td>0100.KL</td>
+            <td>ESCERAM</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.22499999403953552">0.22</td>
+            <td data-sort="127300000.0">127.30M</td>
+            <td data-sort="979132.4740618467">979,132</td>
+            <td data-sort="16.833717172314458">16.83%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="8">8天前</td><td data-sort="21.621616832351467">21.62%</td>
+        </tr>
+        <tr>
+            <td>0105.KL</td>
+            <td>ASIAPLY</td>
+            <td>Chemicals</td>
+            <td data-sort="0.09000000357627869">0.09</td>
+            <td data-sort="100200000.0">100.20M</td>
+            <td data-sort="67419.00267899036">67,419</td>
+            <td data-sort="-2.9468938701207996">-2.95%</td>
+            <td>偏弱/盘整 (10/24)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="8">8天前</td><td data-sort="-5.2631529414422">-5.26%</td>
+        </tr>
+        <tr>
+            <td>0112.KL</td>
+            <td>MIKROMB</td>
+            <td>Technology Equipment</td>
+            <td data-sort="0.6349999904632568">0.63</td>
+            <td data-sort="785400000.0">785.40M</td>
+            <td data-sort="1137665.982913971">1.14M</td>
+            <td data-sort="0.5496237345749149">0.55%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            <td data-sort="20261007">2026-10-07</td><td data-sort="7">7天前</td><td data-sort="-1.5503861641813224">-1.55%</td>
+        </tr>
+        <tr>
+            <td>0119.KL</td>
+            <td>APPASIA</td>
+            <td>Software</td>
+            <td data-sort="0.11500000208616257">0.12</td>
+            <td data-sort="176400000.0">176.40M</td>
+            <td data-sort="114057.00206905603">114,057</td>
+            <td data-sort="-1.840952265368355">-1.84%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            <td data-sort="20260930">2026-09-30</td><td data-sort="5">5天前</td><td data-sort="-4.166662786155852">-4.17%</td>
+        </tr>
+        <tr>
+            <td>0122.KL</td>
+            <td>AIM</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.05000000074505806">0.05</td>
+            <td data-sort="21500000.0">21.50M</td>
+            <td data-sort="6000.000089406967">6,000</td>
+            <td data-sort="-4.767755737598291">-4.77%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            <td data-sort="20260929">2026-09-29</td><td data-sort="6">6天前</td><td data-sort="-9.090907243657693">-9.09%</td>
+        </tr>
+        <tr>
+            <td>0143.KL</td>
+            <td>KEYASIC</td>
+            <td>Semiconductors</td>
+            <td data-sort="0.03999999910593033">0.04</td>
+            <td data-sort="84800000.0">84.80M</td>
+            <td data-sort="276843.9938120544">276,844</td>
+            <td data-sort="-28.785857038451546">-28.79%</td>
+            <td>偏弱/盘整 (9/19)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="10">10天前</td><td data-sort="-38.46153757981291">-38.46%</td>
+        </tr>
+        <tr>
+            <td>0146.KL</td>
+            <td>JFTECH</td>
+            <td>Technology Equipment</td>
+            <td data-sort="0.7749999761581421">0.77</td>
+            <td data-sort="620800000.0">620.80M</td>
+            <td data-sort="2418077.425611019">2.42M</td>
+            <td data-sort="7.87786108670276">7.88%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="2">2天前</td><td data-sort="-0.6410250532086098">-0.64%</td>
+        </tr>
+        <tr>
+            <td>0149.KL</td>
+            <td>FIBON</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.44999998807907104">0.45</td>
+            <td data-sort="45600000.0">45.60M</td>
+            <td data-sort="4274.999886751175">4,275</td>
+            <td data-sort="2.67411081662552">2.67%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261012">2026-10-12</td><td data-sort="1">1天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>0151.KL</td>
+            <td>KGB</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="8.350000381469727">8.35</td>
+            <td data-sort="7228800000.0">7.23B</td>
+            <td data-sort="51216397.33982086">51.22M</td>
+            <td data-sort="-3.574321425165033">-3.57%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="9">9天前</td><td data-sort="-8.442977124469035">-8.44%</td>
+        </tr>
+        <tr>
+            <td>0158.KL</td>
+            <td>SCC</td>
+            <td>Consumer Services</td>
+            <td data-sort="0.20000000298023224">0.20</td>
+            <td data-sort="32500000.0">32.50M</td>
+            <td data-sort="3420.0000509619713">3,420</td>
+            <td data-sort="-7.607601204080142">-7.61%</td>
+            <td>偏弱/盘整 (10/28)</td>
+            <td data-sort="20260921">2026-09-21</td><td data-sort="7">7天前</td><td data-sort="-28.57142781116525">-28.57%</td>
+        </tr>
+        <tr>
+            <td>0160.KL</td>
+            <td>HHHCORP</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.10999999940395355">0.11</td>
+            <td data-sort="41900000.0">41.90M</td>
+            <td data-sort="43.99999976158142">44</td>
+            <td data-sort="4.122345835795526">4.12%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            <td data-sort="20260925">2026-09-25</td><td data-sort="9">9天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>0163.KL</td>
+            <td>CAREPLS</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="0.07999999821186066">0.08</td>
+            <td data-sort="76500000.0">76.50M</td>
+            <td data-sort="68647.99846559763">68,648</td>
+            <td data-sort="-1.074159632671649">-1.07%</td>
+            <td>偏弱/盘整 (6/12)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="2">2天前</td><td data-sort="-5.882356034843122">-5.88%</td>
+        </tr>
+        <tr>
+            <td>0166.KL</td>
+            <td>INARI</td>
+            <td>Semiconductors</td>
+            <td data-sort="2.6600000858306885">2.66</td>
+            <td data-sort="9951300000.0">9.95B</td>
+            <td data-sort="23193870.74840069">23.19M</td>
+            <td data-sort="1.5861011802333596">1.59%</td>
+            <td>偏弱/盘整 (9/19)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="8">8天前</td><td data-sort="-0.37453146732254694">-0.37%</td>
+        </tr>
+        <tr>
+            <td>0167.KL</td>
+            <td>MCLEAN</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.6700000166893005">0.67</td>
+            <td data-sort="183400000.0">183.40M</td>
+            <td data-sort="1563512.0389461517">1.56M</td>
+            <td data-sort="-9.101078201604059">-9.10%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="10">10天前</td><td data-sort="-13.548382283745497">-13.55%</td>
+        </tr>
+        <tr>
+            <td>0191.KL</td>
+            <td>CABNET</td>
+            <td>Technology Equipment</td>
+            <td data-sort="0.22499999403953552">0.22</td>
+            <td data-sort="36600000.0">36.60M</td>
+            <td data-sort="1147.4999696016312">1,147</td>
+            <td data-sort="2.1333362768513155">2.13%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="7">7天前</td><td data-sort="-2.1739174096029172">-2.17%</td>
+        </tr>
+        <tr>
+            <td>0197.KL</td>
+            <td>WEGMANS</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.0949999988079071">0.09</td>
+            <td data-sort="52300000.0">52.30M</td>
+            <td data-sort="6839.9999141693115">6,840</td>
+            <td data-sort="-2.0066315203154215">-2.01%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            <td data-sort="20260925">2026-09-25</td><td data-sort="10">10天前</td><td data-sort="-5.000002607703171">-5.00%</td>
+        </tr>
+        <tr>
+            <td>0208.KL</td>
+            <td>GREATEC</td>
+            <td>Technology Equipment</td>
+            <td data-sort="2.559999942779541">2.56</td>
+            <td data-sort="6286400000.0">6.29B</td>
+            <td data-sort="8264959.815263748">8.26M</td>
+            <td data-sort="-1.7321445355151737">-1.73%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="9">9天前</td><td data-sort="-3.3962320509053336">-3.40%</td>
+        </tr>
+        <tr>
+            <td>0219.KL</td>
+            <td>RL</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="0.2800000011920929">0.28</td>
+            <td data-sort="119000000.0">119.00M</td>
+            <td data-sort="368872.0015704632">368,872</td>
+            <td data-sort="-4.70394753461255">-4.70%</td>
+            <td>偏弱/盘整 (6/26)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="10">10天前</td><td data-sort="-9.677419664956526">-9.68%</td>
+        </tr>
+        <tr>
+            <td>0220.KL</td>
+            <td>OVH</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="0.2549999952316284">0.25</td>
+            <td data-sort="103200000.0">103.20M</td>
+            <td data-sort="117019.49781179428">117,019</td>
+            <td data-sort="4.220129735494479">4.22%</td>
+            <td>偏弱/盘整 (6/26)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="1.9999980926513672">2.00%</td>
+        </tr>
+        <tr>
+            <td>0221.KL</td>
+            <td>TCS</td>
+            <td>Construction</td>
+            <td data-sort="0.07999999821186066">0.08</td>
+            <td data-sort="52900000.0">52.90M</td>
+            <td data-sort="111935.99749803543">111,936</td>
+            <td data-sort="-4.943571875743027">-4.94%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="8">8天前</td><td data-sort="-11.111116630059483">-11.11%</td>
+        </tr>
+        <tr>
+            <td>0227.KL</td>
+            <td>EFRAME</td>
+            <td>Building Materials</td>
+            <td data-sort="0.25">0.25</td>
+            <td data-sort="93200000.0">93.20M</td>
+            <td data-sort="1000.0">1,000</td>
+            <td data-sort="-0.2679752602640101">-0.27%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            <td data-sort="20261013">2026-10-13</td><td data-sort="2">2天前</td><td data-sort="-7.407411086706321">-7.41%</td>
+        </tr>
+        <tr>
+            <td>0229.KL</td>
+            <td>MOBILIA</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.0949999988079071">0.09</td>
+            <td data-sort="70000000.0">70.00M</td>
+            <td data-sort="5899.499925971031">5,899</td>
+            <td data-sort="-1.8762131371439184">-1.88%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            <td data-sort="20261012">2026-10-12</td><td data-sort="3">3天前</td><td data-sort="-5.000002607703171">-5.00%</td>
+        </tr>
+        <tr>
+            <td>0235.KL</td>
+            <td>NESTCON</td>
+            <td>Construction</td>
+            <td data-sort="0.4650000035762787">0.47</td>
+            <td data-sort="377800000.0">377.80M</td>
+            <td data-sort="90721.50069773197">90,722</td>
+            <td data-sort="-1.5326879231317996">-1.53%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="8">8天前</td><td data-sort="-3.124997089616889">-3.12%</td>
+        </tr>
+        <tr>
+            <td>0247.KL</td>
+            <td>UNITRAD</td>
+            <td>Building Materials</td>
+            <td data-sort="0.23999999463558197">0.24</td>
+            <td data-sort="391400000.0">391.40M</td>
+            <td data-sort="28295.999367535114">28,296</td>
+            <td data-sort="1.4372280389715795">1.44%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="8">8天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>0261.KL</td>
+            <td>COSMOS</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.4000000059604645">0.40</td>
+            <td data-sort="97500000.0">97.50M</td>
+            <td data-sort="547800.0081628561">547,800</td>
+            <td data-sort="7.792522610327049">7.79%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="9">9天前</td><td data-sort="5.263160784158717">5.26%</td>
+        </tr>
+        <tr>
+            <td>0272.KL</td>
+            <td>TTVHB</td>
+            <td>Semiconductors</td>
+            <td data-sort="0.23499999940395355">0.23</td>
+            <td data-sort="119900000.0">119.90M</td>
+            <td data-sort="317672.9991942644">317,673</td>
+            <td data-sort="-5.343974358838888">-5.34%</td>
+            <td>偏弱/盘整 (9/19)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-14.545456614376054">-14.55%</td>
+        </tr>
+        <tr>
+            <td>0275.KL</td>
+            <td>OPPSTAR</td>
+            <td>Semiconductors</td>
+            <td data-sort="0.6449999809265137">0.64</td>
+            <td data-sort="430200000.0">430.20M</td>
+            <td data-sort="2771693.9180374146">2.77M</td>
+            <td data-sort="-5.303923760635332">-5.30%</td>
+            <td>偏弱/盘整 (9/19)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="10">10天前</td><td data-sort="-7.857144012743132">-7.86%</td>
+        </tr>
+        <tr>
+            <td>0280.KL</td>
+            <td>MBN</td>
+            <td>Consumer Services</td>
+            <td data-sort="0.1599999964237213">0.16</td>
+            <td data-sort="56000000.0">56.00M</td>
+            <td data-sort="15.999999642372131">16</td>
+            <td data-sort="4.353066909980576">4.35%</td>
+            <td>偏弱/盘整 (10/28)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="3.225803350434739">3.23%</td>
+        </tr>
+        <tr>
+            <td>0282.KL</td>
+            <td>KGW</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="0.09000000357627869">0.09</td>
+            <td data-sort="50700000.0">50.70M</td>
+            <td data-sort="8910.00035405159">8,910</td>
+            <td data-sort="-5.641636296108986">-5.64%</td>
+            <td>偏弱/盘整 (10/32)</td>
+            <td data-sort="20260930">2026-09-30</td><td data-sort="9">9天前</td><td data-sort="-9.999997764825855">-10.00%</td>
+        </tr>
+        <tr>
+            <td>0318.KL</td>
+            <td>ELRIDGE</td>
+            <td>Renewable Energy</td>
+            <td data-sort="0.9599999785423279">0.96</td>
+            <td data-sort="1740000000.0">1.74B</td>
+            <td data-sort="6206783.861267567">6.21M</td>
+            <td data-sort="5.681882599701704">5.68%</td>
+            <td>偏弱/盘整 (7/14)</td>
+            <td data-sort="20261013">2026-10-13</td><td data-sort="3">3天前</td><td data-sort="3.225803350434739">3.23%</td>
+        </tr>
+        <tr>
+            <td>0332.KL</td>
+            <td>TOPVISN</td>
+            <td>Health Care Providers</td>
+            <td data-sort="0.17499999701976776">0.17</td>
+            <td data-sort="52700000.0">52.70M</td>
+            <td data-sort="8644.999852776527">8,645</td>
+            <td data-sort="4.170269704617245">4.17%</td>
+            <td>偏弱/盘整 (5/12)</td>
+            <td data-sort="20261007">2026-10-07</td><td data-sort="4">4天前</td><td data-sort="2.9411736347271384">2.94%</td>
+        </tr>
+        <tr>
+            <td>0345.KL</td>
+            <td>SUNLOGY</td>
+            <td>Construction</td>
+            <td data-sort="0.41999998688697815">0.42</td>
+            <td data-sort="358100000.0">358.10M</td>
+            <td data-sort="784475.9755074978">784,476</td>
+            <td data-sort="-4.16665517355204">-4.17%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-8.69565668088043">-8.70%</td>
+        </tr>
+        <tr>
+            <td>0366.KL</td>
+            <td>ICENTS</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.7950000166893005">0.80</td>
+            <td data-sort="410000000.0">410.00M</td>
+            <td data-sort="325393.5068309307">325,394</td>
+            <td data-sort="-2.6684380905244236">-2.67%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="8">8天前</td><td data-sort="-9.14285523550851">-9.14%</td>
+        </tr>
+        <tr>
+            <td>0367.KL</td>
+            <td>ENPRO</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="0.2549999952316284">0.25</td>
+            <td data-sort="220500000.0">220.50M</td>
+            <td data-sort="94426.498234272">94,426</td>
+            <td data-sort="-1.1484424177084451">-1.15%</td>
+            <td>偏弱/盘整 (6/26)</td>
+            <td data-sort="20261013">2026-10-13</td><td data-sort="3">3天前</td><td data-sort="-3.7735815105932082">-3.77%</td>
+        </tr>
+        <tr>
+            <td>0389.KL</td>
+            <td>OGM</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.14499999582767487">0.14</td>
+            <td data-sort="43400000.0">43.40M</td>
+            <td data-sort="49807.49856680632">49,807</td>
+            <td data-sort="0.8060216602711751">0.81%</td>
+            <td>偏弱/盘整 (23/60)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-3.3333399560713786">-3.33%</td>
+        </tr>
+        <tr>
+            <td>0391.KL</td>
+            <td>AMBEST</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="1.2899999618530273">1.29</td>
+            <td data-sort="739500000.0">739.50M</td>
+            <td data-sort="1538711.954498291">1.54M</td>
+            <td data-sort="-1.8097166307174266">-1.81%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="2">2天前</td><td data-sort="-5.147062626161338">-5.15%</td>
+        </tr>
+        <tr>
+            <td>0395.KL</td>
+            <td>OGX</td>
+            <td>Technology Equipment</td>
+            <td data-sort="0.45500001311302185">0.46</td>
+            <td data-sort="322500000.0">322.50M</td>
+            <td data-sort="2835742.0817255974">2.84M</td>
+            <td data-sort="2.255840919564461">2.26%</td>
+            <td>偏弱/盘整 (15/33)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="8">8天前</td><td data-sort="1.111116703645831">1.11%</td>
+        </tr>
+        <tr>
+            <td>2127.KL</td>
+            <td>COMFORT</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.17499999701976776">0.17</td>
+            <td data-sort="99100000.0">99.10M</td>
+            <td data-sort="131319.99776363373">131,320</td>
+            <td data-sort="6.898583655507551">6.90%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261013">2026-10-13</td><td data-sort="3">3天前</td><td data-sort="2.9411736347271384">2.94%</td>
+        </tr>
+        <tr>
+            <td>2143.KL</td>
+            <td>ECM</td>
+            <td>Other Financials</td>
+            <td data-sort="0.20999999344348907">0.21</td>
+            <td data-sort="101500000.0">101.50M</td>
+            <td data-sort="377.99998819828033">378</td>
+            <td data-sort="-0.7504818978090658">-0.75%</td>
+            <td>偏弱/盘整 (3/18)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="1">1天前</td><td data-sort="-6.6666671081825655">-6.67%</td>
+        </tr>
+        <tr>
+            <td>2453.KL</td>
+            <td>KLUANG</td>
+            <td>Plantation</td>
+            <td data-sort="6.550000190734863">6.55</td>
+            <td data-sort="413800000.0">413.80M</td>
+            <td data-sort="6550.000190734863">6,550</td>
+            <td data-sort="0.011044073577364005">0.01%</td>
+            <td>偏弱/盘整 (11/40)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="8">8天前</td><td data-sort="-0.4559229987694992">-0.46%</td>
+        </tr>
+        <tr>
+            <td>2755.KL</td>
+            <td>FCW</td>
+            <td>Houshold Goods</td>
+            <td data-sort="1.7000000476837158">1.70</td>
+            <td data-sort="425000000.0">425.00M</td>
+            <td data-sort="1020.0000286102295">1,020</td>
+            <td data-sort="-0.17960759615820607">-0.18%</td>
+            <td>偏弱/盘整 (11/41)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="3">3天前</td><td data-sort="-7.10382470945342">-7.10%</td>
+        </tr>
+        <tr>
+            <td>3336.KL</td>
+            <td>IJM</td>
+            <td>Construction</td>
+            <td data-sort="2.630000114440918">2.63</td>
+            <td data-sort="10200000000.0">10.20B</td>
+            <td data-sort="30715245.336532593">30.72M</td>
+            <td data-sort="-5.766534772777615">-5.77%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            <td data-sort="20261013">2026-10-13</td><td data-sort="3">3天前</td><td data-sort="-6.737582386514234">-6.74%</td>
+        </tr>
+        <tr>
+            <td>4197.KL</td>
+            <td>SIME</td>
+            <td>Automotive</td>
+            <td data-sort="2.380000114440918">2.38</td>
+            <td data-sort="17500000000.0">17.50B</td>
+            <td data-sort="18162494.873332977">18.16M</td>
+            <td data-sort="-2.8849569278923064">-2.88%</td>
+            <td>偏弱/盘整 (1/10)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-4.417666452792116">-4.42%</td>
+        </tr>
+        <tr>
+            <td>5009.KL</td>
+            <td>WTHORSE</td>
+            <td>Building Materials</td>
+            <td data-sort="0.48500001430511475">0.49</td>
+            <td data-sort="121200000.0">121.20M</td>
+            <td data-sort="11882.500350475311">11,883</td>
+            <td data-sort="0.8733178919333725">0.87%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="2">2天前</td><td data-sort="-2.999997138977051">-3.00%</td>
+        </tr>
+        <tr>
+            <td>5040.KL</td>
+            <td>MERIDIAN</td>
+            <td>Property</td>
+            <td data-sort="0.014999999664723873">0.01</td>
+            <td data-sort="3800000.0">3.80M</td>
+            <td data-sort="4.499999899417162">4</td>
+            <td data-sort="-21.35962709923276">-21.36%</td>
+            <td>偏弱/盘整 (21/97)</td>
+            <td data-sort="20261007">2026-10-07</td><td data-sort="5">5天前</td><td data-sort="-40.00000223517415">-40.00%</td>
+        </tr>
+        <tr>
+            <td>5054.KL</td>
+            <td>TRC</td>
+            <td>Construction</td>
+            <td data-sort="0.3050000071525574">0.31</td>
+            <td data-sort="149000000.0">149.00M</td>
+            <td data-sort="15250.000357627869">15,250</td>
+            <td data-sort="0.7194429747072905">0.72%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            <td data-sort="20261012">2026-10-12</td><td data-sort="4">4天前</td><td data-sort="-1.6129016752173695">-1.61%</td>
+        </tr>
+        <tr>
+            <td>5065.KL</td>
+            <td>ORNA</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.7099999785423279">0.71</td>
+            <td data-sort="52700000.0">52.70M</td>
+            <td data-sort="2058.999937772751">2,059</td>
+            <td data-sort="0.9322081685408258">0.93%</td>
+            <td>偏弱/盘整 (5/20)</td>
+            <td data-sort="20260929">2026-09-29</td><td data-sort="8">8天前</td><td data-sort="-5.960267148809036">-5.96%</td>
+        </tr>
+        <tr>
+            <td>5078.KL</td>
+            <td>M&G</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="0.3100000023841858">0.31</td>
+            <td data-sort="247300000.0">247.30M</td>
+            <td data-sort="6023145.046323538">6.02M</td>
+            <td data-sort="1.3103188968142336">1.31%</td>
+            <td>偏弱/盘整 (10/32)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="8">8天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>5081.KL</td>
+            <td>EIG</td>
+            <td>Personal Goods</td>
+            <td data-sort="0.17499999701976776">0.17</td>
+            <td data-sort="46300000.0">46.30M</td>
+            <td data-sort="384.9999934434891">385</td>
+            <td data-sort="-7.8578140168216235">-7.86%</td>
+            <td>偏弱/盘整 (4/24)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="4">4天前</td><td data-sort="-12.500002793967683">-12.50%</td>
+        </tr>
+        <tr>
+            <td>5143.KL</td>
+            <td>LUXCHEM</td>
+            <td>Chemicals</td>
+            <td data-sort="0.4350000023841858">0.44</td>
+            <td data-sort="460000000.0">460.00M</td>
+            <td data-sort="415425.00227689743">415,425</td>
+            <td data-sort="0.6549384505015118">0.65%</td>
+            <td>偏弱/盘整 (10/24)</td>
+            <td data-sort="20261013">2026-10-13</td><td data-sort="3">3天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>5145.KL</td>
+            <td>SEALINK</td>
+            <td>Transportation Equipment</td>
+            <td data-sort="0.32499998807907104">0.32</td>
+            <td data-sort="157500000.0">157.50M</td>
+            <td data-sort="213167.4921810627">213,167</td>
+            <td data-sort="1.2421810283193666">1.24%</td>
+            <td>偏弱/盘整 (1/2)</td>
+            <td data-sort="20261008">2026-10-08</td><td data-sort="6">6天前</td><td data-sort="-1.515159040990203">-1.52%</td>
+        </tr>
+        <tr>
+            <td>5152.KL</td>
+            <td>MBL</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.36000001430511475">0.36</td>
+            <td data-sort="92100000.0">92.10M</td>
+            <td data-sort="18324.00072813034">18,324</td>
+            <td data-sort="0.5784936756978672">0.58%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20260924">2026-09-24</td><td data-sort="5">5天前</td><td data-sort="-2.7027000903735274">-2.70%</td>
+        </tr>
+        <tr>
+            <td>5168.KL</td>
+            <td>HARTA</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="1.100000023841858">1.10</td>
+            <td data-sort="4078900000.0">4.08B</td>
+            <td data-sort="6059570.131337643">6.06M</td>
+            <td data-sort="2.815727164699152">2.82%</td>
+            <td>偏弱/盘整 (6/12)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="2">2天前</td><td data-sort="-1.785712575121809">-1.79%</td>
+        </tr>
+        <tr>
+            <td>5195.KL</td>
+            <td>CENSOF</td>
+            <td>Software</td>
+            <td data-sort="0.2150000035762787">0.22</td>
+            <td data-sort="116000000.0">116.00M</td>
+            <td data-sort="451607.5075119734">451,608</td>
+            <td data-sort="-0.18219707777741642">-0.18%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="10">10天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>5216.KL</td>
+            <td>NEXG</td>
+            <td>Digital Services</td>
+            <td data-sort="0.2849999964237213">0.28</td>
+            <td data-sort="1039400000.0000001">1.04B</td>
+            <td data-sort="879395.9889650345">879,396</td>
+            <td data-sort="-1.3947336014645682">-1.39%</td>
+            <td>偏弱/盘整 (6/28)</td>
+            <td data-sort="20261013">2026-10-13</td><td data-sort="3">3天前</td><td data-sort="-5.000004967053534">-5.00%</td>
+        </tr>
+        <tr>
+            <td>5232.KL</td>
+            <td>LEONFB</td>
+            <td>Metals</td>
+            <td data-sort="0.3499999940395355">0.35</td>
+            <td data-sort="129600000.0">129.60M</td>
+            <td data-sort="23099.999606609344">23,100</td>
+            <td data-sort="-2.760848432325113">-2.76%</td>
+            <td>偏弱/盘整 (12/47)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="6">6天前</td><td data-sort="-10.256408492959162">-10.26%</td>
+        </tr>
+        <tr>
+            <td>5277.KL</td>
+            <td>FPGROUP</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.38999998569488525">0.39</td>
+            <td data-sort="216600000.0">216.60M</td>
+            <td data-sort="218945.99196910858">218,946</td>
+            <td data-sort="-4.701741457400386">-4.70%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="9">9天前</td><td data-sort="-7.142857649699376">-7.14%</td>
+        </tr>
+        <tr>
+            <td>5291.KL</td>
+            <td>HPMT</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.19499999284744263">0.19</td>
+            <td data-sort="62400000.0">62.40M</td>
+            <td data-sort="60800.99776983261">60,801</td>
+            <td data-sort="-2.3545729705115446">-2.35%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="8">8天前</td><td data-sort="-11.36363913451346">-11.36%</td>
+        </tr>
+        <tr>
+            <td>5317.KL</td>
+            <td>CPETECH</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="1.3200000524520874">1.32</td>
+            <td data-sort="845900000.0">845.90M</td>
+            <td data-sort="7070712.280964851">7.07M</td>
+            <td data-sort="4.207195916933767">4.21%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="10">10天前</td><td data-sort="2.3255884873024546">2.33%</td>
+        </tr>
+        <tr>
+            <td>5329.KL</td>
+            <td>AZAMJAYA</td>
+            <td>Construction</td>
+            <td data-sort="0.9950000047683716">1.00</td>
+            <td data-sort="490000000.0">490.00M</td>
+            <td data-sort="3582.0000171661377">3,582</td>
+            <td data-sort="2.3055642171269644">2.31%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="2">2天前</td><td data-sort="1.530610755402492">1.53%</td>
+        </tr>
+        <tr>
+            <td>5340.KL</td>
+            <td>UMSINT</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="7.639999866485596">7.64</td>
+            <td data-sort="7149800000.0">7.15B</td>
+            <td data-sort="29795.999479293823">29,796</td>
+            <td data-sort="-9.519778629236878">-9.52%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-14.922046147644085">-14.92%</td>
+        </tr>
+        <tr>
+            <td>5665.KL</td>
+            <td>SSTEEL</td>
+            <td>Metals</td>
+            <td data-sort="0.46000000834465027">0.46</td>
+            <td data-sort="825600000.0">825.60M</td>
+            <td data-sort="351946.0063844919">351,946</td>
+            <td data-sort="-7.0573825017576">-7.06%</td>
+            <td>偏弱/盘整 (12/47)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="9">9天前</td><td data-sort="-12.380946812445632">-12.38%</td>
+        </tr>
+        <tr>
+            <td>6076.KL</td>
+            <td>ENCORP</td>
+            <td>Property</td>
+            <td data-sort="0.16500000655651093">0.17</td>
+            <td data-sort="45900000.0">45.90M</td>
+            <td data-sort="2293.500091135502">2,294</td>
+            <td data-sort="-1.7268239428850314">-1.73%</td>
+            <td>偏弱/盘整 (21/97)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="2">2天前</td><td data-sort="-10.810808416175734">-10.81%</td>
+        </tr>
+        <tr>
+            <td>6084.KL</td>
+            <td>STAR</td>
+            <td>Media</td>
+            <td data-sort="0.2849999964237213">0.28</td>
+            <td data-sort="225300000.0">225.30M</td>
+            <td data-sort="132610.49833595753">132,610</td>
+            <td data-sort="-2.3068576850539135">-2.31%</td>
+            <td>偏弱/盘整 (1/12)</td>
+            <td data-sort="20261012">2026-10-12</td><td data-sort="4">4天前</td><td data-sort="-3.389827426361236">-3.39%</td>
+        </tr>
+        <tr>
+            <td>6378.KL</td>
+            <td>BEDI</td>
+            <td>Property</td>
+            <td data-sort="0.5199999809265137">0.52</td>
+            <td data-sort="450900000.0">450.90M</td>
+            <td data-sort="2235.999917984009">2,236</td>
+            <td data-sort="-0.23599674044175656">-0.24%</td>
+            <td>偏弱/盘整 (21/97)</td>
+            <td data-sort="20261001">2026-10-01</td><td data-sort="9">9天前</td><td data-sort="-1.8867907552966041">-1.89%</td>
+        </tr>
+        <tr>
+            <td>6602.KL</td>
+            <td>BCB</td>
+            <td>Property</td>
+            <td data-sort="0.22499999403953552">0.22</td>
+            <td data-sort="99000000.0">99.00M</td>
+            <td data-sort="4499.99988079071">4,500</td>
+            <td data-sort="-5.629578654037514">-5.63%</td>
+            <td>偏弱/盘整 (21/97)</td>
+            <td data-sort="20260915">2026-09-15</td><td data-sort="10">10天前</td><td data-sort="-11.76470656983444">-11.76%</td>
+        </tr>
+        <tr>
+            <td>6742.KL</td>
+            <td>YTLPOWR</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="5.150000095367432">5.15</td>
+            <td data-sort="49200000000.0">49.20B</td>
+            <td data-sort="102421656.89663887">102.42M</td>
+            <td data-sort="-6.74669585209287">-6.75%</td>
+            <td>偏弱/盘整 (3/9)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-9.649118110560304">-9.65%</td>
+        </tr>
+        <tr>
+            <td>7010.KL</td>
+            <td>PTT</td>
+            <td>Property</td>
+            <td data-sort="1.4199999570846558">1.42</td>
+            <td data-sort="677900000.0">677.90M</td>
+            <td data-sort="4827.99985408783">4,828</td>
+            <td data-sort="-1.7632517366380038">-1.76%</td>
+            <td>偏弱/盘整 (21/97)</td>
+            <td data-sort="20261007">2026-10-07</td><td data-sort="3">3天前</td><td data-sort="-5.960267148809036">-5.96%</td>
+        </tr>
+        <tr>
+            <td>7033.KL</td>
+            <td>HIGHTEC</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="0.5550000071525574">0.56</td>
+            <td data-sort="80400000.0">80.40M</td>
+            <td data-sort="3885.0000500679016">3,885</td>
+            <td data-sort="-4.411099568876087">-4.41%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            <td data-sort="20261007">2026-10-07</td><td data-sort="4">4天前</td><td data-sort="-7.500002483526767">-7.50%</td>
+        </tr>
+        <tr>
+            <td>7086.KL</td>
+            <td>ABLEGRP</td>
+            <td>Building Materials</td>
+            <td data-sort="0.10000000149011612">0.10</td>
+            <td data-sort="26400000.0">26.40M</td>
+            <td data-sort="5100.000075995922">5,100</td>
+            <td data-sort="4.5225184167840675">4.52%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="1">1天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>7099.KL</td>
+            <td>MAYU</td>
+            <td>Metals</td>
+            <td data-sort="0.10000000149011612">0.10</td>
+            <td data-sort="62700000.0">62.70M</td>
+            <td data-sort="10.000000149011612">10</td>
+            <td data-sort="-19.489076422095348">-19.49%</td>
+            <td>偏弱/盘整 (12/47)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="4">4天前</td><td data-sort="-23.076919109158116">-23.08%</td>
+        </tr>
+        <tr>
+            <td>7103.KL</td>
+            <td>SPRITZER</td>
+            <td>Food & Beverages</td>
+            <td data-sort="3.450000047683716">3.45</td>
+            <td data-sort="2423700000.0">2.42B</td>
+            <td data-sort="947370.0130939484">947,370</td>
+            <td data-sort="-3.3104506487924903">-3.31%</td>
+            <td>偏弱/盘整 (9/49)</td>
+            <td data-sort="20261008">2026-10-08</td><td data-sort="6">6天前</td><td data-sort="-5.219781641337641">-5.22%</td>
+        </tr>
+        <tr>
+            <td>7113.KL</td>
+            <td>TOPGLOV</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="0.8999999761581421">0.90</td>
+            <td data-sort="6779700000.0">6.78B</td>
+            <td data-sort="60877888.38728666">60.88M</td>
+            <td data-sort="13.295603387608823">13.30%</td>
+            <td>偏弱/盘整 (6/12)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="10">10天前</td><td data-sort="18.421050980480732">18.42%</td>
+        </tr>
+        <tr>
+            <td>7140.KL</td>
+            <td>OKA</td>
+            <td>Building Materials</td>
+            <td data-sort="0.5199999809265137">0.52</td>
+            <td data-sort="127600000.0">127.60M</td>
+            <td data-sort="207.99999237060547">208</td>
+            <td data-sort="-0.14619704512700096">-0.15%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="8">8天前</td><td data-sort="-2.803746647517422">-2.80%</td>
+        </tr>
+        <tr>
+            <td>7153.KL</td>
+            <td>KOSSAN</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="1.1799999475479126">1.18</td>
+            <td data-sort="3171800000.0">3.17B</td>
+            <td data-sort="4155959.815263748">4.16M</td>
+            <td data-sort="1.782118115649597">1.78%</td>
+            <td>偏弱/盘整 (6/12)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="2">2天前</td><td data-sort="-3.278695092153664">-3.28%</td>
+        </tr>
+        <tr>
+            <td>7191.KL</td>
+            <td>ADVENTA</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="0.15000000596046448">0.15</td>
+            <td data-sort="45800000.0">45.80M</td>
+            <td data-sort="65130.002588033676">65,130</td>
+            <td data-sort="4.597315512806353">4.60%</td>
+            <td>偏弱/盘整 (6/12)</td>
+            <td data-sort="20261013">2026-10-13</td><td data-sort="3">3天前</td><td data-sort="-3.225803350434739">-3.23%</td>
+        </tr>
+        <tr>
+            <td>7195.KL</td>
+            <td>BNASTRA</td>
+            <td>Construction</td>
+            <td data-sort="2.759999990463257">2.76</td>
+            <td data-sort="2692200000.0">2.69B</td>
+            <td data-sort="3526451.9878149033">3.53M</td>
+            <td data-sort="8.757746166559421">8.76%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            <td data-sort="20261007">2026-10-07</td><td data-sort="7">7天前</td><td data-sort="10.399999618530273">10.40%</td>
+        </tr>
+        <tr>
+            <td>7223.KL</td>
+            <td>JADI</td>
+            <td>Consumer Services</td>
+            <td data-sort="0.029999999329447746">0.03</td>
+            <td data-sort="42000000.0">42.00M</td>
+            <td data-sort="75914.99830316752">75,915</td>
+            <td data-sort="-11.682185529642156">-11.68%</td>
+            <td>偏弱/盘整 (10/28)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-25.0">-25.00%</td>
+        </tr>
+        <tr>
+            <td>7232.KL</td>
+            <td>RESINTC</td>
+            <td>Building Materials</td>
+            <td data-sort="0.4350000023841858">0.44</td>
+            <td data-sort="87400000.0">87.40M</td>
+            <td data-sort="3915.000021457672">3,915</td>
+            <td data-sort="-2.6938632144775787">-2.69%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-5.4347838058588644">-5.43%</td>
+        </tr>
+        <tr>
+            <td>7239.KL</td>
+            <td>SCNWOLF</td>
+            <td>Building Materials</td>
+            <td data-sort="0.39500001072883606">0.40</td>
+            <td data-sort="139800000.0">139.80M</td>
+            <td data-sort="39.500001072883606">40</td>
+            <td data-sort="-4.996188899199707">-5.00%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            <td data-sort="20261008">2026-10-08</td><td data-sort="3">3天前</td><td data-sort="-13.186813330768368">-13.19%</td>
+        </tr>
+        <tr>
+            <td>7248.KL</td>
+            <td>SLP</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.8550000190734863">0.86</td>
+            <td data-sort="275800000.0">275.80M</td>
+            <td data-sort="6840.000152587891">6,840</td>
+            <td data-sort="-0.09824625469754811">-0.10%</td>
+            <td>偏弱/盘整 (5/20)</td>
+            <td data-sort="20260929">2026-09-29</td><td data-sort="5">5天前</td><td data-sort="-2.840906397000803">-2.84%</td>
+        </tr>
+        <tr>
+            <td>7293.KL</td>
+            <td>YINSON</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="2.130000114440918">2.13</td>
+            <td data-sort="6403700000.0">6.40B</td>
+            <td data-sort="3281052.17628479">3.28M</td>
+            <td data-sort="1.8500728481157076">1.85%</td>
+            <td>偏弱/盘整 (6/26)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="0.4717089349841497">0.47%</td>
+        </tr>
+        <tr>
+            <td>7382.KL</td>
+            <td>GLBHD</td>
+            <td>Plantation</td>
+            <td data-sort="0.2750000059604645">0.28</td>
+            <td data-sort="62400000.0">62.40M</td>
+            <td data-sort="13200.000286102295">13,200</td>
+            <td data-sort="1.1904591774138693">1.19%</td>
+            <td>偏弱/盘整 (11/40)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="8">8天前</td><td data-sort="-3.508768627628134">-3.51%</td>
+        </tr>
+        <tr>
+            <td>7439.KL</td>
+            <td>TECGUAN</td>
+            <td>Agricultural Products</td>
+            <td data-sort="1.850000023841858">1.85</td>
+            <td data-sort="77000000.0">77.00M</td>
+            <td data-sort="7400.000095367432">7,400</td>
+            <td data-sort="-1.6667185866579364">-1.67%</td>
+            <td>偏弱/盘整 (6/18)</td>
+            <td data-sort="20261012">2026-10-12</td><td data-sort="1">1天前</td><td data-sort="-5.1282062254635195">-5.13%</td>
+        </tr>
+        <tr>
+            <td>7609.KL</td>
+            <td>AJIYA</td>
+            <td>Building Materials</td>
+            <td data-sort="1.0">1.00</td>
+            <td data-sort="593900000.0">593.90M</td>
+            <td data-sort="2900.0">2,900</td>
+            <td data-sort="-0.9451159072413364">-0.95%</td>
+            <td>偏弱/盘整 (11/31)</td>
+            <td data-sort="20261008">2026-10-08</td><td data-sort="6">6天前</td><td data-sort="-2.9126186624346984">-2.91%</td>
+        </tr>
+        <tr>
+            <td>7773.KL</td>
+            <td>EPMB</td>
+            <td>Auto Parts</td>
+            <td data-sort="0.4399999976158142">0.44</td>
+            <td data-sort="140300000.0">140.30M</td>
+            <td data-sort="27719.999849796295">27,720</td>
+            <td data-sort="-5.02255953158981">-5.02%</td>
+            <td>偏弱/盘整 (5/17)</td>
+            <td data-sort="20261006">2026-10-06</td><td data-sort="8">8天前</td><td data-sort="-8.333331781129008">-8.33%</td>
+        </tr>
+        <tr>
+            <td>8176.KL</td>
+            <td>WAVEFRNT</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="0.13500000536441803">0.14</td>
+            <td data-sort="174600000.0">174.60M</td>
+            <td data-sort="99913.50397020578">99,914</td>
+            <td data-sort="-4.02368175032278">-4.02%</td>
+            <td>偏弱/盘整 (26/65)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-10.0">-10.00%</td>
+        </tr>
+        <tr>
+            <td>8311.KL</td>
+            <td>PESONA</td>
+            <td>Construction</td>
+            <td data-sort="0.4650000035762787">0.47</td>
+            <td data-sort="333600000.0">333.60M</td>
+            <td data-sort="154752.00119018555">154,752</td>
+            <td data-sort="-0.32647569334268356">-0.33%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            <td data-sort="20261015">2026-10-15</td><td data-sort="1">1天前</td><td data-sort="-1.0638287753851585">-1.06%</td>
+        </tr>
+        <tr>
+            <td>8362.KL</td>
+            <td>KYM</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.2800000011920929">0.28</td>
+            <td data-sort="43500000.0">43.50M</td>
+            <td data-sort="2044.0000087022781">2,044</td>
+            <td data-sort="1.6056878724062185">1.61%</td>
+            <td>偏弱/盘整 (5/20)</td>
+            <td data-sort="20261008">2026-10-08</td><td data-sort="4">4天前</td><td data-sort="-9.677419664956526">-9.68%</td>
+        </tr>
+        <tr>
+            <td>9016.KL</td>
+            <td>EKSONS</td>
+            <td>Wood & Wood Products</td>
+            <td data-sort="0.47999998927116394">0.48</td>
+            <td data-sort="64900000.00000001">64.90M</td>
+            <td data-sort="25919.999420642853">25,920</td>
+            <td data-sort="4.202858370509619">4.20%</td>
+            <td>偏弱/盘整 (5/16)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="1">1天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>9261.KL</td>
+            <td>GADANG</td>
+            <td>Construction</td>
+            <td data-sort="0.1550000011920929">0.16</td>
+            <td data-sort="120100000.0">120.10M</td>
+            <td data-sort="19096.000146865845">19,096</td>
+            <td data-sort="-0.5532837657965404">-0.55%</td>
+            <td>偏弱/盘整 (20/75)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-3.124997089616889">-3.12%</td>
+        </tr>
+        <tr>
+            <td>9962.KL</td>
+            <td>GMUTUAL</td>
+            <td>Property</td>
+            <td data-sort="0.2549999952316284">0.25</td>
+            <td data-sort="99500000.0">99.50M</td>
+            <td data-sort="16141.499698162079">16,141</td>
+            <td data-sort="-2.0709358192645575">-2.07%</td>
+            <td>偏弱/盘整 (21/97)</td>
+            <td data-sort="20260918">2026-09-18</td><td data-sort="9">9天前</td><td data-sort="-8.928573519295567">-8.93%</td>
+        </tr>
+    </table>
+</body>
+</html>
