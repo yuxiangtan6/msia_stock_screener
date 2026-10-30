@@ -1,0 +1,3315 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>马股每日趋势筛选</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 30px; background: #f7f7f7; }
+    h1 { color: #222; }
+    h2 { color: #444; margin-top: 40px; }
+    table { border-collapse: collapse; width: 100%; background: white; }
+    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+    th { background: #333; color: white; cursor: pointer; user-select: none; }
+    th:hover { background: #555; }
+    tr:nth-child(even) { background: #f2f2f2; }
+    .timestamp { color: #888; font-size: 14px; }
+</style>
+
+<script>
+function sortTable(tableId, colIndex, isNumeric) {
+    const table = document.getElementById(tableId);
+    const rows = Array.from(table.querySelectorAll('tr')).slice(1);
+    const asc = table.dataset.sortCol == colIndex ? table.dataset.sortDir !== 'asc' : true;
+    rows.sort((a, b) => {
+        let x = a.cells[colIndex], y = b.cells[colIndex];
+        if (!x || !y) return 0;
+        if (isNumeric) {
+            let xv = parseFloat(x.dataset.sort ?? x.innerText);
+            let yv = parseFloat(y.dataset.sort ?? y.innerText);
+            if (isNaN(xv)) xv = -Infinity;
+            if (isNaN(yv)) yv = -Infinity;
+            return asc ? xv - yv : yv - xv;
+        } else {
+            return asc ? x.innerText.localeCompare(y.innerText) : y.innerText.localeCompare(x.innerText);
+        }
+    });
+    rows.forEach(r => table.appendChild(r));
+    table.dataset.sortCol = colIndex;
+    table.dataset.sortDir = asc ? 'asc' : 'desc';
+}
+</script>
+
+</head>
+<body>
+    <h1>马股每日趋势筛选清单</h1>
+    <p class="timestamp">更新时间: 2026-10-30 16:17</p>
+
+    <div style="background:#f0f0f0; border-left: 6px solid #cc0000; padding: 15px 20px; margin: 20px 0; font-size: 16px;">
+        <strong>📊 今日大盘宽度：</strong>5.9% (61/1040 只股票站上EMA30) — 大盘偏弱，建议保守，减少新仓位
+    </div>
+
+    <h2>🟢 今日触发信号（Entry Signal）— 5 只</h2>
+    <table id="table1">
+        <tr><th onclick="sortTable('table1',0,false)">代码 ⇅</th><th onclick="sortTable('table1',1,false)">公司名称 ⇅</th><th onclick="sortTable('table1',2,false)">行业 ⇅</th><th onclick="sortTable('table1',3,true)">价格 (RM) ⇅</th><th onclick="sortTable('table1',4,true)">市值 (RM) ⇅</th><th onclick="sortTable('table1',5,true)">当日成交额 (RM) ⇅</th><th onclick="sortTable('table1',6,true)">距离EMA30% ⇅</th><th onclick="sortTable('table1',7,false)">行业趋势 ⇅</th></tr>
+        
+        <tr>
+            <td>0160.KL</td>
+            <td>HHHCORP</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.11500000208616257">0.12</td>
+            <td data-sort="41900000.0">41.90M</td>
+            <td data-sort="11.500000208616257">12</td>
+            <td data-sort="7.86348342088415">7.86%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0173.KL</td>
+            <td>CATCHA</td>
+            <td>Media</td>
+            <td data-sort="0.23499999940395355">0.23</td>
+            <td data-sort="97800000.0">97.80M</td>
+            <td data-sort="46.99999988079071">47</td>
+            <td data-sort="3.03938359792094">3.04%</td>
+            <td>偏弱/盘整 (1/12)</td>
+            
+        </tr>
+        <tr>
+            <td>2143.KL</td>
+            <td>ECM</td>
+            <td>Other Financials</td>
+            <td data-sort="0.2150000035762787">0.22</td>
+            <td data-sort="101500000.0">101.50M</td>
+            <td data-sort="10513.500174880028">10,514</td>
+            <td data-sort="0.9771907178029351">0.98%</td>
+            <td>偏弱/盘整 (1/18)</td>
+            
+        </tr>
+        <tr>
+            <td>4596.KL</td>
+            <td>SAPRES</td>
+            <td>Property</td>
+            <td data-sort="0.20999999344348907">0.21</td>
+            <td data-sort="50600000.0">50.60M</td>
+            <td data-sort="16946.99947088957">16,947</td>
+            <td data-sort="8.91448827900398">8.91%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>7232.KL</td>
+            <td>RESINTC</td>
+            <td>Building Materials</td>
+            <td data-sort="0.46000000834465027">0.46</td>
+            <td data-sort="87400000.0">87.40M</td>
+            <td data-sort="920.0000166893005">920</td>
+            <td data-sort="3.2135180242623997">3.21%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+    </table>
+
+    <h2>🟡 等待突破中（阶段2：回踩支撑）— 195 只</h2>
+    <table id="table2">
+        <tr><th onclick="sortTable('table2',0,false)">代码 ⇅</th><th onclick="sortTable('table2',1,false)">公司名称 ⇅</th><th onclick="sortTable('table2',2,false)">行业 ⇅</th><th onclick="sortTable('table2',3,true)">价格 (RM) ⇅</th><th onclick="sortTable('table2',4,true)">市值 (RM) ⇅</th><th onclick="sortTable('table2',5,true)">当日成交额 (RM) ⇅</th><th onclick="sortTable('table2',6,true)">距离EMA30% ⇅</th><th onclick="sortTable('table2',7,false)">行业趋势 ⇅</th></tr>
+        
+        <tr>
+            <td>0008.KL</td>
+            <td>WILLOW</td>
+            <td>Software</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="141400000.0">141.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/30)</td>
+            
+        </tr>
+        <tr>
+            <td>0011.KL</td>
+            <td>BTECH</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="65500000.0">65.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            
+        </tr>
+        <tr>
+            <td>0017.KL</td>
+            <td>NOVATECH</td>
+            <td>Telecommunications Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="35800000.0">35.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/7)</td>
+            
+        </tr>
+        <tr>
+            <td>0028.KL</td>
+            <td>SCOPE</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="98200000.0">98.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0032.KL</td>
+            <td>REDTONE</td>
+            <td>Telecommunications Service Providers</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="313000000.0">313.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/13)</td>
+            
+        </tr>
+        <tr>
+            <td>0037.KL</td>
+            <td>RGB</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="325100000.0">325.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/31)</td>
+            
+        </tr>
+        <tr>
+            <td>0038.KL</td>
+            <td>ARTRONIQ</td>
+            <td>Chemicals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="61400000.0">61.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            
+        </tr>
+        <tr>
+            <td>0045.KL</td>
+            <td>SSB8</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1409000000.0">1.41B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0090.KL</td>
+            <td>ELSOFT</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="180500000.0">180.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0093.KL</td>
+            <td>SOLUTN</td>
+            <td>Digital Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="36400000.0">36.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0096.KL</td>
+            <td>NEXGRAM</td>
+            <td>Telecommunications Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="44000000.0">44.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/7)</td>
+            
+        </tr>
+        <tr>
+            <td>0097.KL</td>
+            <td>VITROX</td>
+            <td>Semiconductors</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="17500000000.0">17.50B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/19)</td>
+            
+        </tr>
+        <tr>
+            <td>0111.KL</td>
+            <td>K1</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="116500000.0">116.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0112.KL</td>
+            <td>MIKROMB</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="785400000.0">785.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0113.KL</td>
+            <td>MMSV</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="60200000.0">60.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0123.KL</td>
+            <td>PRIVA</td>
+            <td>Telecommunications Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="47300000.0">47.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/7)</td>
+            
+        </tr>
+        <tr>
+            <td>0126.KL</td>
+            <td>MICROLN</td>
+            <td>Digital Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="72400000.0">72.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0127.KL</td>
+            <td>JHM</td>
+            <td>Semiconductors</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="324200000.0">324.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/19)</td>
+            
+        </tr>
+        <tr>
+            <td>0131.KL</td>
+            <td>DFX</td>
+            <td>Digital Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="67099999.99999999">67.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0146.KL</td>
+            <td>JFTECH</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="620800000.0">620.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0149.KL</td>
+            <td>FIBON</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="45600000.0">45.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0151.KL</td>
+            <td>KGB</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="7228800000.0">7.23B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/16)</td>
+            
+        </tr>
+        <tr>
+            <td>0152.KL</td>
+            <td>DGB</td>
+            <td>Software</td>
+            <td data-sort="0.03500000014901161">0.04</td>
+            <td data-sort="9900000.0">9.90M</td>
+            <td data-sort="1911.000008136034">1,911</td>
+            <td data-sort="-0.5300910699104469">-0.53%</td>
+            <td>偏弱/盘整 (1/30)</td>
+            
+        </tr>
+        <tr>
+            <td>0156.KL</td>
+            <td>MPAY</td>
+            <td>Software</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="51600000.0">51.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/30)</td>
+            
+        </tr>
+        <tr>
+            <td>0163.KL</td>
+            <td>CAREPLS</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="76500000.0">76.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            
+        </tr>
+        <tr>
+            <td>0166.KL</td>
+            <td>INARI</td>
+            <td>Semiconductors</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="9951300000.0">9.95B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/19)</td>
+            
+        </tr>
+        <tr>
+            <td>0178.KL</td>
+            <td>SEDANIA</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="44900000.0">44.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0181.KL</td>
+            <td>AEMULUS</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="262300000.0">262.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0185.KL</td>
+            <td>HSSEB</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="256800000.0">256.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/16)</td>
+            
+        </tr>
+        <tr>
+            <td>0190.KL</td>
+            <td>ESAFE</td>
+            <td>Auto Parts</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="26500000.0">26.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            
+        </tr>
+        <tr>
+            <td>0191.KL</td>
+            <td>CABNET</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="36600000.0">36.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0196.KL</td>
+            <td>QES</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="458800000.0">458.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0200.KL</td>
+            <td>REVENUE</td>
+            <td>Digital Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="45400000.0">45.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0201.KL</td>
+            <td>NOVA</td>
+            <td>Pharmaceuticals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="111600000.0">111.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/5)</td>
+            
+        </tr>
+        <tr>
+            <td>0208.KL</td>
+            <td>GREATEC</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="6286400000.0">6.29B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0215.KL</td>
+            <td>SLVEST</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3201200000.0">3.20B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            
+        </tr>
+        <tr>
+            <td>0217.KL</td>
+            <td>PWRWELL</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="609600000.0">609.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0221.KL</td>
+            <td>TCS</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="52900000.0">52.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0225.KL</td>
+            <td>SCGBHD</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3368600000.0">3.37B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0227.KL</td>
+            <td>EFRAME</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="93200000.0">93.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>0236.KL</td>
+            <td>RAMSSOL</td>
+            <td>Software</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="335700000.0">335.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/30)</td>
+            
+        </tr>
+        <tr>
+            <td>0237.KL</td>
+            <td>HAILY</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="74000000.0">74.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0240.KL</td>
+            <td>CORAZA</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="526200000.00000006">526.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/16)</td>
+            
+        </tr>
+        <tr>
+            <td>0241.KL</td>
+            <td>TAGHILL</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="101200000.0">101.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0245.KL</td>
+            <td>MNHLDG</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="2500500000.0">2.50B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0261.KL</td>
+            <td>COSMOS</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="97500000.0">97.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0262.KL</td>
+            <td>SUNVIEW</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="231100000.0">231.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            
+        </tr>
+        <tr>
+            <td>0273.KL</td>
+            <td>VLB</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="955600000.0">955.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0277.KL</td>
+            <td>CLOUDPT</td>
+            <td>Digital Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="249900000.0">249.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0280.KL</td>
+            <td>MBN</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="56000000.0">56.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0281.KL</td>
+            <td>DAY3</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="83300000.0">83.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0291.KL</td>
+            <td>CHB</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="840100000.0">840.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0292.KL</td>
+            <td>JTGROUP</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="423000000.0">423.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0296.KL</td>
+            <td>HEGROUP</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="418000000.0">418.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0300.KL</td>
+            <td>SBH</td>
+            <td>Agricultural Products</td>
+            <td data-sort="0.1550000011920929">0.16</td>
+            <td data-sort="155400000.0">155.40M</td>
+            <td data-sort="6727.000051736832">6,727</td>
+            <td data-sort="-5.643271944558432">-5.64%</td>
+            <td>偏弱/盘整 (3/18)</td>
+            
+        </tr>
+        <tr>
+            <td>0301.KL</td>
+            <td>ZANTAT</td>
+            <td>Chemicals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="45600000.0">45.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            
+        </tr>
+        <tr>
+            <td>0303.KL</td>
+            <td>ALPHA</td>
+            <td>Health Care Providers</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1190700000.0">1.19B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            
+        </tr>
+        <tr>
+            <td>0304.KL</td>
+            <td>FPHB</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="151200000.0">151.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0310.KL</td>
+            <td>UUE</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="584000000.0">584.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0312.KL</td>
+            <td>OFB</td>
+            <td>Food & Beverages</td>
+            <td data-sort="0.12999999523162842">0.13</td>
+            <td data-sort="28400000.0">28.40M</td>
+            <td data-sort="2729.999899864197">2,730</td>
+            <td data-sort="-2.831309157044888">-2.83%</td>
+            <td>偏弱/盘整 (3/49)</td>
+            
+        </tr>
+        <tr>
+            <td>0317.KL</td>
+            <td>EPB</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.22499999403953552">0.22</td>
+            <td data-sort="85600000.0">85.60M</td>
+            <td data-sort="3667.499902844429">3,667</td>
+            <td data-sort="0.5554499705403793">0.56%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0318.KL</td>
+            <td>ELRIDGE</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1740000000.0">1.74B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            
+        </tr>
+        <tr>
+            <td>0322.KL</td>
+            <td>KHB</td>
+            <td>Auto Parts</td>
+            <td data-sort="0.08500000089406967">0.09</td>
+            <td data-sort="36200000.0">36.20M</td>
+            <td data-sort="518.500005453825">519</td>
+            <td data-sort="-2.397040603168709">-2.40%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            
+        </tr>
+        <tr>
+            <td>0325.KL</td>
+            <td>NE</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="747400000.0">747.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0330.KL</td>
+            <td>SUPREME</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="81700000.0">81.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0336.KL</td>
+            <td>WINSTAR</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="204400000.0">204.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            
+        </tr>
+        <tr>
+            <td>0337.KL</td>
+            <td>SET</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="240200000.0">240.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0340.KL</td>
+            <td>NORTHERN</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="273000000.0">273.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            
+        </tr>
+        <tr>
+            <td>0342.KL</td>
+            <td>RTECH</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="46600000.0">46.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0348.KL</td>
+            <td>CLITE</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="132000000.0">132.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0349.KL</td>
+            <td>SUMI</td>
+            <td>Chemicals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="144400000.0">144.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            
+        </tr>
+        <tr>
+            <td>0353.KL</td>
+            <td>WESTRVR</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="132300000.00000001">132.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0366.KL</td>
+            <td>ICENTS</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="410000000.0">410.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0367.KL</td>
+            <td>ENPRO</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="220500000.0">220.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/26)</td>
+            
+        </tr>
+        <tr>
+            <td>0373.KL</td>
+            <td>VERDANT</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="167600000.0">167.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            
+        </tr>
+        <tr>
+            <td>0375.KL</td>
+            <td>THMY</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1509600000.0">1.51B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0378.KL</td>
+            <td>FAMIERA</td>
+            <td>Agricultural Products</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="94500000.0">94.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/18)</td>
+            
+        </tr>
+        <tr>
+            <td>0379.KL</td>
+            <td>PMW</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="236400000.0">236.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0385.KL</td>
+            <td>BMS</td>
+            <td>Retailers</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="207900000.0">207.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/24)</td>
+            
+        </tr>
+        <tr>
+            <td>0389.KL</td>
+            <td>OGM</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="43400000.0">43.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0390.KL</td>
+            <td>ISF</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="785000000.0">785.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0391.KL</td>
+            <td>AMBEST</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="739500000.0">739.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>0392.KL</td>
+            <td>KEEMING</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="770300000.0">770.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>0395.KL</td>
+            <td>OGX</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="322500000.0">322.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>0396.KL</td>
+            <td>ADNEX</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="215000000.0">215.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0450.KL</td>
+            <td>MFGROUP</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="104000000.0">104.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0452.KL</td>
+            <td>GOLDLI</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="51000000.0">51.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>0457.KL</td>
+            <td>PENTECH</td>
+            <td>Digital Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="210800000.0">210.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/28)</td>
+            
+        </tr>
+        <tr>
+            <td>1287.KL</td>
+            <td>EXSIMHB</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1172700000.0">1.17B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/31)</td>
+            
+        </tr>
+        <tr>
+            <td>2127.KL</td>
+            <td>COMFORT</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="99100000.0">99.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>2259.KL</td>
+            <td>TALAMT</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="88700000.0">88.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>2305.KL</td>
+            <td>AYER</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="542700000.0">542.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>2607.KL</td>
+            <td>INCKEN</td>
+            <td>Plantation</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="197800000.0">197.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/40)</td>
+            
+        </tr>
+        <tr>
+            <td>2755.KL</td>
+            <td>FCW</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="425000000.0">425.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            
+        </tr>
+        <tr>
+            <td>3042.KL</td>
+            <td>PETRONM</td>
+            <td>Oil & Gas Producers</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="936900000.0">936.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/3)</td>
+            
+        </tr>
+        <tr>
+            <td>3174.KL</td>
+            <td>L&G</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="579800000.0">579.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>3816.KL</td>
+            <td>MISC</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="35000000000.0">35.00B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/32)</td>
+            
+        </tr>
+        <tr>
+            <td>3867.KL</td>
+            <td>MPI</td>
+            <td>Semiconductors</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="8378600000.0">8.38B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/19)</td>
+            
+        </tr>
+        <tr>
+            <td>3891.KL</td>
+            <td>MUIIND</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="129000000.0">129.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/31)</td>
+            
+        </tr>
+        <tr>
+            <td>4057.KL</td>
+            <td>ASIAPAC</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="178700000.0">178.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>4359.KL</td>
+            <td>TURIYA</td>
+            <td>Semiconductors</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="43500000.0">43.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/19)</td>
+            
+        </tr>
+        <tr>
+            <td>4634.KL</td>
+            <td>POS</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="207400000.0">207.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/32)</td>
+            
+        </tr>
+        <tr>
+            <td>5010.KL</td>
+            <td>TONGHER</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="384100000.0">384.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            
+        </tr>
+        <tr>
+            <td>5022.KL</td>
+            <td>PAOS</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="50700000.0">50.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            
+        </tr>
+        <tr>
+            <td>5037.KL</td>
+            <td>COMPUGT</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.009999999776482582">0.01</td>
+            <td data-sort="90800000.0">90.80M</td>
+            <td data-sort="3119.9999302625656">3,120</td>
+            <td data-sort="-27.237785562217947">-27.24%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>5048.KL</td>
+            <td>YB</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="21600000.0">21.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>5054.KL</td>
+            <td>TRC</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="149000000.0">149.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>5065.KL</td>
+            <td>ORNA</td>
+            <td>Packaging Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="52700000.0">52.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/20)</td>
+            
+        </tr>
+        <tr>
+            <td>5073.KL</td>
+            <td>NAIM</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="434200000.0">434.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>5078.KL</td>
+            <td>M&G</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="247300000.0">247.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/32)</td>
+            
+        </tr>
+        <tr>
+            <td>5100.KL</td>
+            <td>BPPLAS</td>
+            <td>Packaging Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="219600000.0">219.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/20)</td>
+            
+        </tr>
+        <tr>
+            <td>5107.KL</td>
+            <td>IQGROUP</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="33900000.0">33.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            
+        </tr>
+        <tr>
+            <td>5133.KL</td>
+            <td>PENERGY</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="218800000.0">218.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/26)</td>
+            
+        </tr>
+        <tr>
+            <td>5145.KL</td>
+            <td>SEALINK</td>
+            <td>Transportation Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="157500000.0">157.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/2)</td>
+            
+        </tr>
+        <tr>
+            <td>5152.KL</td>
+            <td>MBL</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="92100000.0">92.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>5161.KL</td>
+            <td>JCY</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1102600000.0">1.10B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>5162.KL</td>
+            <td>VSTECS</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1760400000.0">1.76B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>5168.KL</td>
+            <td>HARTA</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="4078900000.0">4.08B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            
+        </tr>
+        <tr>
+            <td>5172.KL</td>
+            <td>SINARAN</td>
+            <td>Construction</td>
+            <td data-sort="0.10999999940395355">0.11</td>
+            <td data-sort="115600000.0">115.60M</td>
+            <td data-sort="2793.99998486042">2,794</td>
+            <td data-sort="-2.876999870495332">-2.88%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>5184.KL</td>
+            <td>CYPARK</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="587900000.0">587.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            
+        </tr>
+        <tr>
+            <td>5195.KL</td>
+            <td>CENSOF</td>
+            <td>Software</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="116000000.0">116.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/30)</td>
+            
+        </tr>
+        <tr>
+            <td>5199.KL</td>
+            <td>HIBISCS</td>
+            <td>Oil & Gas Producers</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1710800000.0">1.71B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/3)</td>
+            
+        </tr>
+        <tr>
+            <td>5209.KL</td>
+            <td>GASMSIA</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="6317300000.0">6.32B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            
+        </tr>
+        <tr>
+            <td>5232.KL</td>
+            <td>LEONFB</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="129600000.0">129.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            
+        </tr>
+        <tr>
+            <td>5253.KL</td>
+            <td>ECONBHD</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="170100000.0">170.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>5260.KL</td>
+            <td>OWG</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="82600000.0">82.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/31)</td>
+            
+        </tr>
+        <tr>
+            <td>5272.KL</td>
+            <td>RANHILL</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3682900000.0">3.68B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            
+        </tr>
+        <tr>
+            <td>5311.KL</td>
+            <td>CEB</td>
+            <td>Diversified Industrials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="243000000.0">243.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            
+        </tr>
+        <tr>
+            <td>5317.KL</td>
+            <td>CPETECH</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="845900000.0">845.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>5398.KL</td>
+            <td>GAMUDA</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="29200000000.0">29.20B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>5555.KL</td>
+            <td>SUNMED</td>
+            <td>Health Care Providers</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="24400000000.0">24.40B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            
+        </tr>
+        <tr>
+            <td>5592.KL</td>
+            <td>GCE</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="62100000.0">62.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/31)</td>
+            
+        </tr>
+        <tr>
+            <td>5843.KL</td>
+            <td>KPS</td>
+            <td>Diversified Industrials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="290200000.0">290.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            
+        </tr>
+        <tr>
+            <td>6068.KL</td>
+            <td>PCCS</td>
+            <td>Personal Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="64700000.0">64.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            
+        </tr>
+        <tr>
+            <td>6076.KL</td>
+            <td>ENCORP</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="45900000.0">45.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>6173.KL</td>
+            <td>BDB</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="56200000.0">56.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>6254.KL</td>
+            <td>PDZ</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="17700000.0">17.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/32)</td>
+            
+        </tr>
+        <tr>
+            <td>6378.KL</td>
+            <td>BEDI</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="450900000.0">450.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>7005.KL</td>
+            <td>BIG</td>
+            <td>Diversified Industrials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="36200000.0">36.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            
+        </tr>
+        <tr>
+            <td>7016.KL</td>
+            <td>CHUAN</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="46400000.0">46.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>7033.KL</td>
+            <td>HIGHTEC</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="80400000.0">80.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/16)</td>
+            
+        </tr>
+        <tr>
+            <td>7070.KL</td>
+            <td>VIZIONE</td>
+            <td>Construction</td>
+            <td data-sort="0.0949999988079071">0.09</td>
+            <td data-sort="49700000.0">49.70M</td>
+            <td data-sort="4369.999945163727">4,370</td>
+            <td data-sort="-4.479291013923668">-4.48%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>7086.KL</td>
+            <td>ABLEGRP</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="26400000.0">26.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>7099.KL</td>
+            <td>MAYU</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="62700000.0">62.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            
+        </tr>
+        <tr>
+            <td>7103.KL</td>
+            <td>SPRITZER</td>
+            <td>Food & Beverages</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="2423700000.0">2.42B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/49)</td>
+            
+        </tr>
+        <tr>
+            <td>7117.KL</td>
+            <td>CJCEN</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="98000000.0">98.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/32)</td>
+            
+        </tr>
+        <tr>
+            <td>7123.KL</td>
+            <td>MAXLAND</td>
+            <td>Wood & Wood Products</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="64099999.99999999">64.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            
+        </tr>
+        <tr>
+            <td>7145.KL</td>
+            <td>TXCD</td>
+            <td>Construction</td>
+            <td data-sort="0.1899999976158142">0.19</td>
+            <td data-sort="62300000.0">62.30M</td>
+            <td data-sort="8568.99989247322">8,569</td>
+            <td data-sort="-0.7799216695052897">-0.78%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>7149.KL</td>
+            <td>ENGKAH</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.17000000178813934">0.17</td>
+            <td data-sort="21000000.0">21.00M</td>
+            <td data-sort="14246.000149846077">14,246</td>
+            <td data-sort="-4.172828277950498">-4.17%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            
+        </tr>
+        <tr>
+            <td>7153.KL</td>
+            <td>KOSSAN</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3171800000.0">3.17B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            
+        </tr>
+        <tr>
+            <td>7155.KL</td>
+            <td>SKPRES</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="500100000.0">500.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>7157.KL</td>
+            <td>CYL</td>
+            <td>Packaging Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="28500000.0">28.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/20)</td>
+            
+        </tr>
+        <tr>
+            <td>7160.KL</td>
+            <td>PENTA</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3639900000.0">3.64B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>7161.KL</td>
+            <td>KERJAYA</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="4447900000.0">4.45B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>7163.KL</td>
+            <td>PJBUMI</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="326400000.0">326.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>7165.KL</td>
+            <td>VELOCITY</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="96700000.0">96.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>7168.KL</td>
+            <td>PRG</td>
+            <td>Personal Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="31900000.0">31.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            
+        </tr>
+        <tr>
+            <td>7174.KL</td>
+            <td>CAB</td>
+            <td>Agricultural Products</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="382500000.0">382.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/18)</td>
+            
+        </tr>
+        <tr>
+            <td>7191.KL</td>
+            <td>ADVENTA</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="45800000.0">45.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            
+        </tr>
+        <tr>
+            <td>7195.KL</td>
+            <td>BNASTRA</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="2692200000.0">2.69B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>7200.KL</td>
+            <td>TEKSENG</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="86600000.0">86.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            
+        </tr>
+        <tr>
+            <td>7204.KL</td>
+            <td>D&O</td>
+            <td>Semiconductors</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="588800000.0">588.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/19)</td>
+            
+        </tr>
+        <tr>
+            <td>7208.KL</td>
+            <td>EURO</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="122900000.0">122.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            
+        </tr>
+        <tr>
+            <td>7211.KL</td>
+            <td>TAFI</td>
+            <td>Houshold Goods</td>
+            <td data-sort="0.6399999856948853">0.64</td>
+            <td data-sort="263700000.0">263.70M</td>
+            <td data-sort="16639.999628067017">16,640</td>
+            <td data-sort="-1.5292822004674933">-1.53%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            
+        </tr>
+        <tr>
+            <td>7233.KL</td>
+            <td>DUFU</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1443600000.0">1.44B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>7240.KL</td>
+            <td>IHB</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="66400000.00000001">66.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>7241.KL</td>
+            <td>NGGB</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="776300000.0">776.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>7245.KL</td>
+            <td>CITAGLB</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="646800000.0">646.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            
+        </tr>
+        <tr>
+            <td>7248.KL</td>
+            <td>SLP</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.8550000190734863">0.86</td>
+            <td data-sort="275800000.0">275.80M</td>
+            <td data-sort="256.5000057220459">257</td>
+            <td data-sort="-0.08593436404147241">-0.09%</td>
+            <td>偏弱/盘整 (3/20)</td>
+            
+        </tr>
+        <tr>
+            <td>7293.KL</td>
+            <td>YINSON</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="6403700000.0">6.40B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/26)</td>
+            
+        </tr>
+        <tr>
+            <td>7382.KL</td>
+            <td>GLBHD</td>
+            <td>Plantation</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="62400000.0">62.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/40)</td>
+            
+        </tr>
+        <tr>
+            <td>7439.KL</td>
+            <td>TECGUAN</td>
+            <td>Agricultural Products</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="77000000.0">77.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/18)</td>
+            
+        </tr>
+        <tr>
+            <td>7609.KL</td>
+            <td>AJIYA</td>
+            <td>Building Materials</td>
+            <td data-sort="0.9649999737739563">0.96</td>
+            <td data-sort="593900000.0">593.90M</td>
+            <td data-sort="34257.49906897545">34,257</td>
+            <td data-sort="-3.4404817205404488">-3.44%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>7692.KL</td>
+            <td>MYTECH</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="61500000.0">61.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            
+        </tr>
+        <tr>
+            <td>7803.KL</td>
+            <td>HEXCARE</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="83500000.0">83.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            
+        </tr>
+        <tr>
+            <td>8044.KL</td>
+            <td>CFM</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="22000000.0">22.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
+            <td>8346.KL</td>
+            <td>PRKCORP</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="79000000.0">79.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/32)</td>
+            
+        </tr>
+        <tr>
+            <td>8567.KL</td>
+            <td>SALCON</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="244200000.0">244.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            
+        </tr>
+        <tr>
+            <td>8591.KL</td>
+            <td>CRESBLD</td>
+            <td>Construction</td>
+            <td data-sort="0.45500001311302185">0.46</td>
+            <td data-sort="99000000.0">99.00M</td>
+            <td data-sort="2320.5000668764114">2,321</td>
+            <td data-sort="-0.47854681365249385">-0.48%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            
+        </tr>
+        <tr>
+            <td>8613.KL</td>
+            <td>ENRA</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="166300000.0">166.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/26)</td>
+            
+        </tr>
+        <tr>
+            <td>8893.KL</td>
+            <td>MKLAND</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="175100000.0">175.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>8966.KL</td>
+            <td>TECHBASE</td>
+            <td>Personal Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="17200000.0">17.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            
+        </tr>
+        <tr>
+            <td>9016.KL</td>
+            <td>EKSONS</td>
+            <td>Wood & Wood Products</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="64900000.00000001">64.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            
+        </tr>
+        <tr>
+            <td>9172.KL</td>
+            <td>FPI</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="300100000.0">300.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            
+        </tr>
+        <tr>
+            <td>9237.KL</td>
+            <td>SCIB</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="91600000.0">91.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            
+        </tr>
+        <tr>
+            <td>9393.KL</td>
+            <td>ITRONIC</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="24800000.0">24.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            
+        </tr>
+        <tr>
+            <td>9423.KL</td>
+            <td>CWG</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="36700000.0">36.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            
+        </tr>
+        <tr>
+            <td>9466.KL</td>
+            <td>KKB</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="303200000.0">303.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/16)</td>
+            
+        </tr>
+        <tr>
+            <td>9741.KL</td>
+            <td>ROHAS</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="80400000.0">80.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/16)</td>
+            
+        </tr>
+        <tr>
+            <td>9814.KL</td>
+            <td>BERTAM</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="62900000.0">62.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>9822.KL</td>
+            <td>SAM</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="2809500000.0">2.81B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            
+        </tr>
+        <tr>
+            <td>9881.KL</td>
+            <td>LSTEEL</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="59500000.0">59.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            
+        </tr>
+        <tr>
+            <td>9946.KL</td>
+            <td>ETA</td>
+            <td>Food & Beverages</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="88800000.0">88.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/49)</td>
+            
+        </tr>
+        <tr>
+            <td>9962.KL</td>
+            <td>GMUTUAL</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="99500000.0">99.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            
+        </tr>
+        <tr>
+            <td>9997.KL</td>
+            <td>PENSONI</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="64500000.0">64.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            
+        </tr>
+    </table>
+
+    <h2>🔵 近期已突破（过去10天内触发过）— 95 只</h2>
+    <table id="table3">
+        <tr><th onclick="sortTable('table3',0,false)">代码 ⇅</th><th onclick="sortTable('table3',1,false)">公司名称 ⇅</th><th onclick="sortTable('table3',2,false)">行业 ⇅</th><th onclick="sortTable('table3',3,true)">价格 (RM) ⇅</th><th onclick="sortTable('table3',4,true)">市值 (RM) ⇅</th><th onclick="sortTable('table3',5,true)">当日成交额 (RM) ⇅</th><th onclick="sortTable('table3',6,true)">距离EMA30% ⇅</th><th onclick="sortTable('table3',7,false)">行业趋势 ⇅</th><th onclick="sortTable('table3',8,false)">突破日期 ⇅</th><th onclick="sortTable('table3',9,true)">距今 ⇅</th><th onclick="sortTable('table3',10,true)">突破后涨跌% ⇅</th></tr>
+        
+        <tr>
+            <td>0037.KL</td>
+            <td>RGB</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="325100000.0">325.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/31)</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0097.KL</td>
+            <td>VITROX</td>
+            <td>Semiconductors</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="17500000000.0">17.50B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/19)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0100.KL</td>
+            <td>ESCERAM</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="127300000.0">127.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20261021">2026-10-21</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0111.KL</td>
+            <td>K1</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="116500000.0">116.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0112.KL</td>
+            <td>MIKROMB</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="785400000.0">785.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0131.KL</td>
+            <td>DFX</td>
+            <td>Digital Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="67099999.99999999">67.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/28)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0146.KL</td>
+            <td>JFTECH</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="620800000.0">620.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0149.KL</td>
+            <td>FIBON</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="45600000.0">45.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0158.KL</td>
+            <td>SCC</td>
+            <td>Consumer Services</td>
+            <td data-sort="0.2199999988079071">0.22</td>
+            <td data-sort="32500000.0">32.50M</td>
+            <td data-sort="637.9999965429306">638</td>
+            <td data-sort="1.982126233706838">1.98%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            <td data-sort="20260921">2026-09-21</td><td data-sort="9">9天前</td><td data-sort="-21.428572188834753">-21.43%</td>
+        </tr>
+        <tr>
+            <td>0163.KL</td>
+            <td>CAREPLS</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="76500000.0">76.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0181.KL</td>
+            <td>AEMULUS</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="262300000.0">262.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            <td data-sort="20261021">2026-10-21</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0200.KL</td>
+            <td>REVENUE</td>
+            <td>Digital Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="45400000.0">45.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/28)</td>
+            <td data-sort="20261022">2026-10-22</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0201.KL</td>
+            <td>NOVA</td>
+            <td>Pharmaceuticals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="111600000.0">111.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/5)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0215.KL</td>
+            <td>SLVEST</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3201200000.0">3.20B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0225.KL</td>
+            <td>SCGBHD</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3368600000.0">3.37B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0227.KL</td>
+            <td>EFRAME</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="93200000.0">93.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            <td data-sort="20261013">2026-10-13</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0229.KL</td>
+            <td>MOBILIA</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="70000000.0">70.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            <td data-sort="20261012">2026-10-12</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0233.KL</td>
+            <td>PEKAT</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1461600000.0">1.46B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0237.KL</td>
+            <td>HAILY</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="74000000.0">74.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0240.KL</td>
+            <td>CORAZA</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="526200000.00000006">526.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/16)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0241.KL</td>
+            <td>TAGHILL</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="101200000.0">101.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0262.KL</td>
+            <td>SUNVIEW</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="231100000.0">231.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            <td data-sort="20261016">2026-10-16</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0280.KL</td>
+            <td>MBN</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="56000000.0">56.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0281.KL</td>
+            <td>DAY3</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="83300000.0">83.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0291.KL</td>
+            <td>CHB</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="840100000.0">840.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0292.KL</td>
+            <td>JTGROUP</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="423000000.0">423.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            <td data-sort="20261022">2026-10-22</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0303.KL</td>
+            <td>ALPHA</td>
+            <td>Health Care Providers</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1190700000.0">1.19B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0310.KL</td>
+            <td>UUE</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="584000000.0">584.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0317.KL</td>
+            <td>EPB</td>
+            <td>Industrial Services</td>
+            <td data-sort="0.22499999403953552">0.22</td>
+            <td data-sort="85600000.0">85.60M</td>
+            <td data-sort="3667.499902844429">3,667</td>
+            <td data-sort="0.5554499705403793">0.56%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="3">3天前</td><td data-sort="-2.1739174096029172">-2.17%</td>
+        </tr>
+        <tr>
+            <td>0332.KL</td>
+            <td>TOPVISN</td>
+            <td>Health Care Providers</td>
+            <td data-sort="0.16500000655651093">0.17</td>
+            <td data-sort="52700000.0">52.70M</td>
+            <td data-sort="16549.500657618046">16,550</td>
+            <td data-sort="-1.6194181666826508">-1.62%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            <td data-sort="20261007">2026-10-07</td><td data-sort="10">10天前</td><td data-sort="-2.9411736347271384">-2.94%</td>
+        </tr>
+        <tr>
+            <td>0337.KL</td>
+            <td>SET</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="240200000.0">240.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20261019">2026-10-19</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0340.KL</td>
+            <td>NORTHERN</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="273000000.0">273.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0349.KL</td>
+            <td>SUMI</td>
+            <td>Chemicals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="144400000.0">144.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            <td data-sort="20261016">2026-10-16</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0353.KL</td>
+            <td>WESTRVR</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="132300000.00000001">132.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            <td data-sort="20261021">2026-10-21</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0356.KL</td>
+            <td>PEOPLE</td>
+            <td>Consumer Services</td>
+            <td data-sort="0.23999999463558197">0.24</td>
+            <td data-sort="84400000.0">84.40M</td>
+            <td data-sort="119.99999731779099">120</td>
+            <td data-sort="9.05229236769355">9.05%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            <td data-sort="20261022">2026-10-22</td><td data-sort="3">3天前</td><td data-sort="-2.0408204226431472">-2.04%</td>
+        </tr>
+        <tr>
+            <td>0367.KL</td>
+            <td>ENPRO</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="220500000.0">220.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/26)</td>
+            <td data-sort="20261021">2026-10-21</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0373.KL</td>
+            <td>VERDANT</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="167600000.0">167.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/14)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0387.KL</td>
+            <td>GHS</td>
+            <td>Food & Beverages</td>
+            <td data-sort="0.1850000023841858">0.19</td>
+            <td data-sort="90000000.0">90.00M</td>
+            <td data-sort="23680.00030517578">23,680</td>
+            <td data-sort="0.4435993182638125">0.44%</td>
+            <td>偏弱/盘整 (3/49)</td>
+            <td data-sort="20261016">2026-10-16</td><td data-sort="7">7天前</td><td data-sort="-2.6315764707211">-2.63%</td>
+        </tr>
+        <tr>
+            <td>0389.KL</td>
+            <td>OGM</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="43400000.0">43.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0390.KL</td>
+            <td>ISF</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="785000000.0">785.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0395.KL</td>
+            <td>OGX</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="322500000.0">322.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            <td data-sort="20261021">2026-10-21</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0396.KL</td>
+            <td>ADNEX</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="215000000.0">215.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>1287.KL</td>
+            <td>EXSIMHB</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1172700000.0">1.17B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/31)</td>
+            <td data-sort="20261021">2026-10-21</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>2127.KL</td>
+            <td>COMFORT</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="99100000.0">99.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>2607.KL</td>
+            <td>INCKEN</td>
+            <td>Plantation</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="197800000.0">197.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/40)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>2755.KL</td>
+            <td>FCW</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="425000000.0">425.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>3298.KL</td>
+            <td>HEXZA</td>
+            <td>Chemicals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="224100000.0">224.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            <td data-sort="20261022">2026-10-22</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>4359.KL</td>
+            <td>TURIYA</td>
+            <td>Semiconductors</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="43500000.0">43.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/19)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5009.KL</td>
+            <td>WTHORSE</td>
+            <td>Building Materials</td>
+            <td data-sort="0.48500001430511475">0.49</td>
+            <td data-sort="121200000.0">121.20M</td>
+            <td data-sort="6838.500201702118">6,839</td>
+            <td data-sort="1.62755168254568">1.63%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="6">6天前</td><td data-sort="-2.999997138977051">-3.00%</td>
+        </tr>
+        <tr>
+            <td>5010.KL</td>
+            <td>TONGHER</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="384100000.0">384.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            <td data-sort="20261021">2026-10-21</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5065.KL</td>
+            <td>ORNA</td>
+            <td>Packaging Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="52700000.0">52.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/20)</td>
+            <td data-sort="20260929">2026-09-29</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5066.KL</td>
+            <td>NTPM</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="230300000.0">230.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            <td data-sort="20261016">2026-10-16</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5081.KL</td>
+            <td>EIG</td>
+            <td>Personal Goods</td>
+            <td data-sort="0.18000000715255737">0.18</td>
+            <td data-sort="46300000.0">46.30M</td>
+            <td data-sort="3564.000141620636">3,564</td>
+            <td data-sort="-4.904600506133347">-4.90%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-9.999997764825855">-10.00%</td>
+        </tr>
+        <tr>
+            <td>5145.KL</td>
+            <td>SEALINK</td>
+            <td>Transportation Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="157500000.0">157.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/2)</td>
+            <td data-sort="20261022">2026-10-22</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5152.KL</td>
+            <td>MBL</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="92100000.0">92.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20260924">2026-09-24</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5161.KL</td>
+            <td>JCY</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1102600000.0">1.10B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5168.KL</td>
+            <td>HARTA</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="4078900000.0">4.08B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5172.KL</td>
+            <td>SINARAN</td>
+            <td>Construction</td>
+            <td data-sort="0.10999999940395355">0.11</td>
+            <td data-sort="115600000.0">115.60M</td>
+            <td data-sort="2793.99998486042">2,794</td>
+            <td data-sort="-2.876999870495332">-2.88%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            <td data-sort="20261019">2026-10-19</td><td data-sort="8">8天前</td><td data-sort="-12.000000476837158">-12.00%</td>
+        </tr>
+        <tr>
+            <td>5209.KL</td>
+            <td>GASMSIA</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="6317300000.0">6.32B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            <td data-sort="20261022">2026-10-22</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5272.KL</td>
+            <td>RANHILL</td>
+            <td>Gas, Water & Multi-Utilities</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3682900000.0">3.68B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5302.KL</td>
+            <td>ATECH</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1027500000.0">1.03B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20261016">2026-10-16</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5317.KL</td>
+            <td>CPETECH</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="845900000.0">845.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5329.KL</td>
+            <td>AZAMJAYA</td>
+            <td>Construction</td>
+            <td data-sort="0.9549999833106995">0.95</td>
+            <td data-sort="490000000.0">490.00M</td>
+            <td data-sort="21009.99963283539">21,010</td>
+            <td data-sort="-1.822477451890443">-1.82%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="3">3天前</td><td data-sort="-3.045688381596555">-3.05%</td>
+        </tr>
+        <tr>
+            <td>5555.KL</td>
+            <td>SUNMED</td>
+            <td>Health Care Providers</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="24400000000.0">24.40B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5592.KL</td>
+            <td>GCE</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="62100000.0">62.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/31)</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5843.KL</td>
+            <td>KPS</td>
+            <td>Diversified Industrials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="290200000.0">290.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>6076.KL</td>
+            <td>ENCORP</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="45900000.0">45.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>6173.KL</td>
+            <td>BDB</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="56200000.0">56.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7010.KL</td>
+            <td>PTT</td>
+            <td>Property</td>
+            <td data-sort="1.409999966621399">1.41</td>
+            <td data-sort="677900000.0">677.90M</td>
+            <td data-sort="31019.999265670776">31,020</td>
+            <td data-sort="-0.7084053691412888">-0.71%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            <td data-sort="20261007">2026-10-07</td><td data-sort="9">9天前</td><td data-sort="-6.622518177048375">-6.62%</td>
+        </tr>
+        <tr>
+            <td>7016.KL</td>
+            <td>CHUAN</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="46400000.0">46.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            <td data-sort="20261022">2026-10-22</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7017.KL</td>
+            <td>KOMARK</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.05999999865889549">0.06</td>
+            <td data-sort="15000000.0">15.00M</td>
+            <td data-sort="17.999999597668648">18</td>
+            <td data-sort="-7.673864156797825">-7.67%</td>
+            <td>偏弱/盘整 (3/20)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="2">2天前</td><td data-sort="-14.285716566504256">-14.29%</td>
+        </tr>
+        <tr>
+            <td>7020.KL</td>
+            <td>ASTEEL</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="45900000.0">45.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            <td data-sort="20261019">2026-10-19</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7033.KL</td>
+            <td>HIGHTEC</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="80400000.0">80.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/16)</td>
+            <td data-sort="20261007">2026-10-07</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7053.KL</td>
+            <td>SEEHUP</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="0.675000011920929">0.68</td>
+            <td data-sort="51900000.0">51.90M</td>
+            <td data-sort="67.5000011920929">68</td>
+            <td data-sort="0.7432094081282788">0.74%</td>
+            <td>偏弱/盘整 (4/32)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="3">3天前</td><td data-sort="-0.7352934086817846">-0.74%</td>
+        </tr>
+        <tr>
+            <td>7086.KL</td>
+            <td>ABLEGRP</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="26400000.0">26.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            <td data-sort="20261014">2026-10-14</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7099.KL</td>
+            <td>MAYU</td>
+            <td>Metals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="62700000.0">62.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (7/47)</td>
+            <td data-sort="20261005">2026-10-05</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7145.KL</td>
+            <td>TXCD</td>
+            <td>Construction</td>
+            <td data-sort="0.1899999976158142">0.19</td>
+            <td data-sort="62300000.0">62.30M</td>
+            <td data-sort="8568.99989247322">8,569</td>
+            <td data-sort="-0.7799216695052897">-0.78%</td>
+            <td>偏弱/盘整 (3/75)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="2">2天前</td><td data-sort="-2.5641002128344392">-2.56%</td>
+        </tr>
+        <tr>
+            <td>7153.KL</td>
+            <td>KOSSAN</td>
+            <td>Health Care Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3171800000.0">3.17B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/12)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7160.KL</td>
+            <td>PENTA</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3639900000.0">3.64B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/33)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7168.KL</td>
+            <td>PRG</td>
+            <td>Personal Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="31900000.0">31.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7174.KL</td>
+            <td>CAB</td>
+            <td>Agricultural Products</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="382500000.0">382.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/18)</td>
+            <td data-sort="20261022">2026-10-22</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7176.KL</td>
+            <td>TPC</td>
+            <td>Agricultural Products</td>
+            <td data-sort="0.25999999046325684">0.26</td>
+            <td data-sort="83200000.0">83.20M</td>
+            <td data-sort="2625.999903678894">2,626</td>
+            <td data-sort="-2.5715669103852257">-2.57%</td>
+            <td>偏弱/盘整 (3/18)</td>
+            <td data-sort="20261016">2026-10-16</td><td data-sort="2">2天前</td><td data-sort="-5.454550971669479">-5.45%</td>
+        </tr>
+        <tr>
+            <td>7208.KL</td>
+            <td>EURO</td>
+            <td>Consumer Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="122900000.0">122.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/28)</td>
+            <td data-sort="20261020">2026-10-20</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7233.KL</td>
+            <td>DUFU</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="1443600000.0">1.44B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7239.KL</td>
+            <td>SCNWOLF</td>
+            <td>Building Materials</td>
+            <td data-sort="0.38999998569488525">0.39</td>
+            <td data-sort="139800000.0">139.80M</td>
+            <td data-sort="662.9999756813049">663</td>
+            <td data-sort="-5.262559060271523">-5.26%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            <td data-sort="20261008">2026-10-08</td><td data-sort="6">6天前</td><td data-sort="-14.285719899966379">-14.29%</td>
+        </tr>
+        <tr>
+            <td>7241.KL</td>
+            <td>NGGB</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="776300000.0">776.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            <td data-sort="20261021">2026-10-21</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7248.KL</td>
+            <td>SLP</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.8550000190734863">0.86</td>
+            <td data-sort="275800000.0">275.80M</td>
+            <td data-sort="256.5000057220459">257</td>
+            <td data-sort="-0.08593436404147241">-0.09%</td>
+            <td>偏弱/盘整 (3/20)</td>
+            <td data-sort="20260929">2026-09-29</td><td data-sort="7">7天前</td><td data-sort="-2.840906397000803">-2.84%</td>
+        </tr>
+        <tr>
+            <td>7293.KL</td>
+            <td>YINSON</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="6403700000.0">6.40B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/26)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>7439.KL</td>
+            <td>TECGUAN</td>
+            <td>Agricultural Products</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="77000000.0">77.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/18)</td>
+            <td data-sort="20261021">2026-10-21</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>8362.KL</td>
+            <td>KYM</td>
+            <td>Packaging Materials</td>
+            <td data-sort="0.2849999964237213">0.28</td>
+            <td data-sort="43500000.0">43.50M</td>
+            <td data-sort="3191.9999599456787">3,192</td>
+            <td data-sort="3.521229086859512">3.52%</td>
+            <td>偏弱/盘整 (3/20)</td>
+            <td data-sort="20261008">2026-10-08</td><td data-sort="7">7天前</td><td data-sort="-8.064517989739157">-8.06%</td>
+        </tr>
+        <tr>
+            <td>8893.KL</td>
+            <td>MKLAND</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="175100000.0">175.10M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/97)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>8966.KL</td>
+            <td>TECHBASE</td>
+            <td>Personal Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="17200000.0">17.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>9016.KL</td>
+            <td>EKSONS</td>
+            <td>Wood & Wood Products</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="64900000.00000001">64.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            <td data-sort="20261020">2026-10-20</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>9237.KL</td>
+            <td>SCIB</td>
+            <td>Building Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="91600000.0">91.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (4/31)</td>
+            <td data-sort="20261016">2026-10-16</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>9466.KL</td>
+            <td>KKB</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="303200000.0">303.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/16)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+        </tr>
+    </table>
+</body>
+</html>
