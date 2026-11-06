@@ -43,13 +43,13 @@ function sortTable(tableId, colIndex, isNumeric) {
 </head>
 <body>
     <h1>马股每日趋势筛选清单</h1>
-    <p class="timestamp">更新时间: 2026-11-05 17:39</p>
+    <p class="timestamp">更新时间: 2026-11-06 17:03</p>
 
     <div style="background:#f0f0f0; border-left: 6px solid #cc0000; padding: 15px 20px; margin: 20px 0; font-size: 16px;">
         <strong>📊 今日大盘宽度：</strong>5.7% (59/1039 只股票站上EMA30) — 大盘偏弱，建议保守，减少新仓位
     </div>
 
-    <h2>🟢 今日触发信号（Entry Signal）— 2 只</h2>
+    <h2>🟢 今日触发信号（Entry Signal）— 3 只</h2>
     <table id="table1">
         <tr><th onclick="sortTable('table1',0,false)">代码 ⇅</th><th onclick="sortTable('table1',1,false)">公司名称 ⇅</th><th onclick="sortTable('table1',2,false)">行业 ⇅</th><th onclick="sortTable('table1',3,true)">价格 (RM) ⇅</th><th onclick="sortTable('table1',4,true)">市值 (RM) ⇅</th><th onclick="sortTable('table1',5,true)">当日成交额 (RM) ⇅</th><th onclick="sortTable('table1',6,true)">距离EMA30% ⇅</th><th onclick="sortTable('table1',7,false)">行业趋势 ⇅</th></tr>
         
@@ -60,27 +60,49 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="0.11500000208616257">0.12</td>
             <td data-sort="41900000.0">41.90M</td>
             <td data-sort="11.500000208616257">12</td>
-            <td data-sort="7.86348342088415">7.86%</td>
+            <td data-sort="7.8635795685121685">7.86%</td>
             <td>偏弱/盘整 (5/60)</td>
             
         </tr>
         <tr>
-            <td>2305.KL</td>
-            <td>AYER</td>
-            <td>Property</td>
-            <td data-sort="8.100000381469727">8.10</td>
-            <td data-sort="542700000.0">542.70M</td>
-            <td data-sort="28350.001335144043">28,350</td>
-            <td data-sort="5.810104755147229">5.81%</td>
-            <td>偏弱/盘整 (4/97)</td>
+            <td>7232.KL</td>
+            <td>RESINTC</td>
+            <td>Building Materials</td>
+            <td data-sort="0.44999998807907104">0.45</td>
+            <td data-sort="87400000.0">87.40M</td>
+            <td data-sort="269.9999928474426">270</td>
+            <td data-sort="1.0657501998675385">1.07%</td>
+            <td>偏弱/盘整 (3/31)</td>
+            
+        </tr>
+        <tr>
+            <td>7439.KL</td>
+            <td>TECGUAN</td>
+            <td>Agricultural Products</td>
+            <td data-sort="1.909999966621399">1.91</td>
+            <td data-sort="77000000.0">77.00M</td>
+            <td data-sort="1336.9999766349792">1,337</td>
+            <td data-sort="1.065484788449722">1.07%</td>
+            <td>偏弱/盘整 (3/18)</td>
             
         </tr>
     </table>
 
-    <h2>🟡 等待突破中（阶段2：回踩支撑）— 203 只</h2>
+    <h2>🟡 等待突破中（阶段2：回踩支撑）— 198 只</h2>
     <table id="table2">
         <tr><th onclick="sortTable('table2',0,false)">代码 ⇅</th><th onclick="sortTable('table2',1,false)">公司名称 ⇅</th><th onclick="sortTable('table2',2,false)">行业 ⇅</th><th onclick="sortTable('table2',3,true)">价格 (RM) ⇅</th><th onclick="sortTable('table2',4,true)">市值 (RM) ⇅</th><th onclick="sortTable('table2',5,true)">当日成交额 (RM) ⇅</th><th onclick="sortTable('table2',6,true)">距离EMA30% ⇅</th><th onclick="sortTable('table2',7,false)">行业趋势 ⇅</th></tr>
         
+        <tr>
+            <td>0008.KL</td>
+            <td>WILLOW</td>
+            <td>Software</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="141400000.0">141.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/30)</td>
+            
+        </tr>
         <tr>
             <td>0010.KL</td>
             <td>IRIS</td>
@@ -90,17 +112,6 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/33)</td>
-            
-        </tr>
-        <tr>
-            <td>0011.KL</td>
-            <td>BTECH</td>
-            <td>Gas, Water & Multi-Utilities</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="65500000.0">65.50M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/9)</td>
             
         </tr>
         <tr>
@@ -122,7 +133,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="325100000.0">325.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/31)</td>
+            <td>偏弱/盘整 (2/31)</td>
             
         </tr>
         <tr>
@@ -133,7 +144,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="61400000.0">61.40M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/24)</td>
+            <td>偏弱/盘整 (1/24)</td>
             
         </tr>
         <tr>
@@ -144,7 +155,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="1409000000.0">1.41B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0055.KL</td>
+            <td>SERSOL</td>
+            <td>Chemicals</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="32200000.000000004">32.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/24)</td>
             
         </tr>
         <tr>
@@ -173,22 +195,11 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td>0092.KL</td>
             <td>MTOUCHE</td>
             <td>Telecommunications Service Providers</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.019999999552965164">0.02</td>
             <td data-sort="18500000.0">18.50M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
+            <td data-sort="259.99999418854713">260</td>
+            <td data-sort="-18.32467395241775">-18.32%</td>
             <td>偏弱/盘整 (0/13)</td>
-            
-        </tr>
-        <tr>
-            <td>0093.KL</td>
-            <td>SOLUTN</td>
-            <td>Digital Services</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="36400000.0">36.40M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
             
         </tr>
         <tr>
@@ -247,17 +258,6 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
-            <td>0126.KL</td>
-            <td>MICROLN</td>
-            <td>Digital Services</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="72400000.0">72.40M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
-            
-        </tr>
-        <tr>
             <td>0127.KL</td>
             <td>JHM</td>
             <td>Semiconductors</td>
@@ -276,7 +276,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="67099999.99999999">67.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
+            <td>偏弱/盘整 (2/28)</td>
             
         </tr>
         <tr>
@@ -331,28 +331,17 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="7228800000.0">7.23B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/16)</td>
-            
-        </tr>
-        <tr>
-            <td>0152.KL</td>
-            <td>DGB</td>
-            <td>Software</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="9900000.0">9.90M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/30)</td>
+            <td>偏弱/盘整 (2/16)</td>
             
         </tr>
         <tr>
             <td>0158.KL</td>
             <td>SCC</td>
             <td>Consumer Services</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.20499999821186066">0.20</td>
             <td data-sort="32500000.0">32.50M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
+            <td data-sort="16399.999856948853">16,400</td>
+            <td data-sort="-4.4851807468538905">-4.49%</td>
             <td>偏弱/盘整 (3/28)</td>
             
         </tr>
@@ -397,7 +386,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="97800000.0">97.80M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/12)</td>
+            <td>偏弱/盘整 (1/12)</td>
             
         </tr>
         <tr>
@@ -408,7 +397,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="138000000.0">138.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
+            <td>偏弱/盘整 (2/28)</td>
             
         </tr>
         <tr>
@@ -441,18 +430,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="256800000.0">256.80M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/16)</td>
+            <td>偏弱/盘整 (2/16)</td>
             
         </tr>
         <tr>
-            <td>0190.KL</td>
-            <td>ESAFE</td>
-            <td>Auto Parts</td>
+            <td>0191.KL</td>
+            <td>CABNET</td>
+            <td>Technology Equipment</td>
             <td data-sort="nan">nan</td>
-            <td data-sort="26500000.0">26.50M</td>
+            <td data-sort="36600000.0">36.60M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/16)</td>
+            <td>偏弱/盘整 (0/33)</td>
             
         </tr>
         <tr>
@@ -470,11 +459,11 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td>0197.KL</td>
             <td>WEGMANS</td>
             <td>Houshold Goods</td>
-            <td data-sort="0.10499999672174454">0.10</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="52300000.0">52.30M</td>
-            <td data-sort="5260.499835759401">5,260</td>
-            <td data-sort="3.946647242793242">3.95%</td>
-            <td>偏弱/盘整 (4/41)</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
             
         </tr>
         <tr>
@@ -485,7 +474,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="45400000.0">45.40M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
+            <td>偏弱/盘整 (2/28)</td>
             
         </tr>
         <tr>
@@ -496,7 +485,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="111600000.0">111.60M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/5)</td>
+            <td>偏弱/盘整 (1/5)</td>
             
         </tr>
         <tr>
@@ -511,6 +500,17 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
+            <td>0215.KL</td>
+            <td>SLVEST</td>
+            <td>Renewable Energy</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="3201200000.0">3.20B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/14)</td>
+            
+        </tr>
+        <tr>
             <td>0220.KL</td>
             <td>OVH</td>
             <td>Energy, Infrastructure, Equipment & Services</td>
@@ -519,17 +519,6 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/26)</td>
-            
-        </tr>
-        <tr>
-            <td>0221.KL</td>
-            <td>TCS</td>
-            <td>Construction</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="52900000.0">52.90M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
             
         </tr>
         <tr>
@@ -547,11 +536,11 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td>0227.KL</td>
             <td>EFRAME</td>
             <td>Building Materials</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.23999999463558197">0.24</td>
             <td data-sort="93200000.0">93.20M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
+            <td data-sort="1007.9999774694443">1,008</td>
+            <td data-sort="-3.224356573460776">-3.22%</td>
+            <td>偏弱/盘整 (3/31)</td>
             
         </tr>
         <tr>
@@ -573,7 +562,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="74000000.0">74.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -595,7 +584,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="526200000.00000006">526.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/16)</td>
+            <td>偏弱/盘整 (2/16)</td>
+            
+        </tr>
+        <tr>
+            <td>0241.KL</td>
+            <td>TAGHILL</td>
+            <td>Construction</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="101200000.0">101.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -606,7 +606,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="2500500000.0">2.50B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -617,7 +617,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="221200000.0">221.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
+            <td>偏弱/盘整 (2/28)</td>
+            
+        </tr>
+        <tr>
+            <td>0255.KL</td>
+            <td>EIB</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="33700000.0">33.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/16)</td>
             
         </tr>
         <tr>
@@ -654,6 +665,17 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
+            <td>0268.KL</td>
+            <td>L&PBHD</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="109400000.0">109.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
             <td>0270.KL</td>
             <td>NATGATE</td>
             <td>Industrial Materials, Components & Equipment</td>
@@ -672,7 +694,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="955600000.0">955.60M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
+            
+        </tr>
+        <tr>
+            <td>0276.KL</td>
+            <td>ADB</td>
+            <td>Software</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="253200000.0">253.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/30)</td>
             
         </tr>
         <tr>
@@ -683,7 +716,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="249900000.0">249.90M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
+            <td>偏弱/盘整 (2/28)</td>
             
         </tr>
         <tr>
@@ -698,22 +731,22 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
+            <td>0279.KL</td>
+            <td>SYNERGY</td>
+            <td>Houshold Goods</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="87500000.0">87.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            
+        </tr>
+        <tr>
             <td>0280.KL</td>
             <td>MBN</td>
             <td>Consumer Services</td>
             <td data-sort="nan">nan</td>
             <td data-sort="56000000.0">56.00M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/28)</td>
-            
-        </tr>
-        <tr>
-            <td>0281.KL</td>
-            <td>DAY3</td>
-            <td>Consumer Services</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="83300000.0">83.30M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/28)</td>
@@ -738,7 +771,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="423000000.0">423.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -753,14 +786,14 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
-            <td>0301.KL</td>
-            <td>ZANTAT</td>
-            <td>Chemicals</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="45600000.0">45.60M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/24)</td>
+            <td>0299.KL</td>
+            <td>AGX</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="0.4449999928474426">0.44</td>
+            <td data-sort="190500000.0">190.50M</td>
+            <td data-sort="33419.49946284294">33,419</td>
+            <td data-sort="1.4341472948421892">1.43%</td>
+            <td>偏弱/盘整 (2/32)</td>
             
         </tr>
         <tr>
@@ -793,7 +826,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="584000000.0">584.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -804,7 +837,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="28400000.0">28.40M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/49)</td>
+            <td>偏弱/盘整 (3/49)</td>
+            
+        </tr>
+        <tr>
+            <td>0317.KL</td>
+            <td>EPB</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="85600000.0">85.60M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
             
         </tr>
         <tr>
@@ -819,6 +863,17 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
+            <td>0323.KL</td>
+            <td>CREST</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="151500000.0">151.50M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
             <td>0325.KL</td>
             <td>NE</td>
             <td>Industrial Materials, Components & Equipment</td>
@@ -827,17 +882,6 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/65)</td>
-            
-        </tr>
-        <tr>
-            <td>0332.KL</td>
-            <td>TOPVISN</td>
-            <td>Health Care Providers</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="52700000.0">52.70M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/12)</td>
             
         </tr>
         <tr>
@@ -892,7 +936,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="144400000.0">144.40M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/24)</td>
+            <td>偏弱/盘整 (1/24)</td>
             
         </tr>
         <tr>
@@ -947,7 +991,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="466400000.0">466.40M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -1002,7 +1046,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="90000000.0">90.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/49)</td>
+            <td>偏弱/盘整 (3/49)</td>
             
         </tr>
         <tr>
@@ -1039,6 +1083,17 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
+            <td>0392.KL</td>
+            <td>KEEMING</td>
+            <td>Industrial Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="770300000.0">770.30M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (5/60)</td>
+            
+        </tr>
+        <tr>
             <td>0395.KL</td>
             <td>OGX</td>
             <td>Technology Equipment</td>
@@ -1057,7 +1112,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="215000000.0">215.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -1072,25 +1127,25 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
-            <td>2127.KL</td>
-            <td>COMFORT</td>
-            <td>Industrial Materials, Components & Equipment</td>
+            <td>0453.KL</td>
+            <td>EIPOWER</td>
+            <td>Industrial Services</td>
             <td data-sort="nan">nan</td>
-            <td data-sort="99100000.0">99.10M</td>
+            <td data-sort="560000000.0">560.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/65)</td>
+            <td>偏弱/盘整 (5/60)</td>
             
         </tr>
         <tr>
-            <td>2143.KL</td>
-            <td>ECM</td>
-            <td>Other Financials</td>
+            <td>0456.KL</td>
+            <td>MMCS</td>
+            <td>Technology Equipment</td>
             <td data-sort="nan">nan</td>
-            <td data-sort="101500000.0">101.50M</td>
+            <td data-sort="201300000.0">201.30M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/18)</td>
+            <td>偏弱/盘整 (0/33)</td>
             
         </tr>
         <tr>
@@ -1101,7 +1156,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="50700000.0">50.70M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
+            
+        </tr>
+        <tr>
+            <td>2305.KL</td>
+            <td>AYER</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="542700000.0">542.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
@@ -1112,7 +1178,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="197800000.0">197.80M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/40)</td>
+            <td>偏弱/盘整 (0/40)</td>
             
         </tr>
         <tr>
@@ -1122,19 +1188,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="1.7100000381469727">1.71</td>
             <td data-sort="425000000.0">425.00M</td>
             <td data-sort="12996.000289916992">12,996</td>
-            <td data-sort="-0.2947090477198301">-0.29%</td>
-            <td>偏弱/盘整 (4/41)</td>
-            
-        </tr>
-        <tr>
-            <td>3042.KL</td>
-            <td>PETRONM</td>
-            <td>Oil & Gas Producers</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="936900000.0">936.90M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/3)</td>
+            <td data-sort="-0.29516766865275834">-0.30%</td>
+            <td>偏弱/盘整 (3/41)</td>
             
         </tr>
         <tr>
@@ -1145,7 +1200,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="579800000.0">579.80M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
@@ -1178,7 +1233,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="129000000.0">129.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/31)</td>
+            <td>偏弱/盘整 (2/31)</td>
             
         </tr>
         <tr>
@@ -1189,7 +1244,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="187500000.0">187.50M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
@@ -1215,17 +1270,6 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
-            <td>4596.KL</td>
-            <td>SAPRES</td>
-            <td>Property</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="50600000.0">50.60M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
-            
-        </tr>
-        <tr>
             <td>4707.KL</td>
             <td>NESTLE</td>
             <td>Food & Beverages</td>
@@ -1233,39 +1277,17 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="21500000000.0">21.50B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/49)</td>
-            
-        </tr>
-        <tr>
-            <td>5009.KL</td>
-            <td>WTHORSE</td>
-            <td>Building Materials</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="121200000.0">121.20M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
-            
-        </tr>
-        <tr>
-            <td>5010.KL</td>
-            <td>TONGHER</td>
-            <td>Metals</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="384100000.0">384.10M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/47)</td>
+            <td>偏弱/盘整 (3/49)</td>
             
         </tr>
         <tr>
             <td>5037.KL</td>
             <td>COMPUGT</td>
             <td>Industrial Services</td>
-            <td data-sort="0.009999999776482582">0.01</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="90800000.0">90.80M</td>
-            <td data-sort="599.9999865889549">600</td>
-            <td data-sort="-24.67587630666623">-24.68%</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (5/60)</td>
             
         </tr>
@@ -1273,11 +1295,11 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td>5048.KL</td>
             <td>YB</td>
             <td>Building Materials</td>
-            <td data-sort="0.05000000074505806">0.05</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="21600000.0">21.60M</td>
-            <td data-sort="5225.000077858567">5,225</td>
-            <td data-sort="-11.787778870963757">-11.79%</td>
-            <td>偏弱/盘整 (2/31)</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/31)</td>
             
         </tr>
         <tr>
@@ -1299,40 +1321,40 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="434200000.0">434.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
-            <td>5078.KL</td>
-            <td>M&G</td>
-            <td>Transportation & Logistics Services</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="247300000.0">247.30M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/32)</td>
+            <td>5079.KL</td>
+            <td>ONEGLOVE</td>
+            <td>Travel, Leisure & Hospitality</td>
+            <td data-sort="0.12999999523162842">0.13</td>
+            <td data-sort="58300000.0">58.30M</td>
+            <td data-sort="31901.998829841614">31,902</td>
+            <td data-sort="-0.0738088926751706">-0.07%</td>
+            <td>偏弱/盘整 (2/31)</td>
             
         </tr>
         <tr>
-            <td>5105.KL</td>
-            <td>CANONE</td>
-            <td>Packaging Materials</td>
+            <td>5081.KL</td>
+            <td>EIG</td>
+            <td>Personal Goods</td>
             <td data-sort="nan">nan</td>
-            <td data-sort="326700000.0">326.70M</td>
+            <td data-sort="46300000.0">46.30M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/20)</td>
+            <td>偏弱/盘整 (1/23)</td>
             
         </tr>
         <tr>
-            <td>5107.KL</td>
-            <td>IQGROUP</td>
-            <td>Houshold Goods</td>
+            <td>5087.KL</td>
+            <td>MYCRON</td>
+            <td>Metals</td>
             <td data-sort="nan">nan</td>
-            <td data-sort="33900000.0">33.90M</td>
+            <td data-sort="78500000.0">78.50M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/41)</td>
+            <td>偏弱/盘整 (6/47)</td>
             
         </tr>
         <tr>
@@ -1344,28 +1366,6 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/26)</td>
-            
-        </tr>
-        <tr>
-            <td>5145.KL</td>
-            <td>SEALINK</td>
-            <td>Transportation Equipment</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="157500000.0">157.50M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/2)</td>
-            
-        </tr>
-        <tr>
-            <td>5152.KL</td>
-            <td>MBL</td>
-            <td>Industrial Materials, Components & Equipment</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="92100000.0">92.10M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/65)</td>
             
         </tr>
         <tr>
@@ -1398,7 +1398,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="115600000.0">115.60M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -1453,18 +1453,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="170100000.0">170.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            
-        </tr>
-        <tr>
-            <td>5260.KL</td>
-            <td>OWG</td>
-            <td>Travel, Leisure & Hospitality</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="82600000.0">82.60M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/31)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -1497,7 +1486,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="844000000.0">844.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/24)</td>
+            <td>偏弱/盘整 (1/24)</td>
             
         </tr>
         <tr>
@@ -1519,7 +1508,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="243000000.0">243.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/9)</td>
+            <td>偏弱/盘整 (0/9)</td>
             
         </tr>
         <tr>
@@ -1530,7 +1519,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="1942100000.0">1.94B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
@@ -1563,7 +1552,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="490000000.0">490.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
+            
+        </tr>
+        <tr>
+            <td>5352.KL</td>
+            <td>MTTSL</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="2825000000.0">2.83B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/32)</td>
             
         </tr>
         <tr>
@@ -1574,18 +1574,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="29200000000.0">29.20B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
             <td>5592.KL</td>
             <td>GCE</td>
             <td>Travel, Leisure & Hospitality</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.36000001430511475">0.36</td>
             <td data-sort="62100000.0">62.10M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/31)</td>
+            <td data-sort="2196.0000872612">2,196</td>
+            <td data-sort="-6.8324684086761565">-6.83%</td>
+            <td>偏弱/盘整 (2/31)</td>
             
         </tr>
         <tr>
@@ -1596,18 +1596,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="290200000.0">290.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/9)</td>
-            
-        </tr>
-        <tr>
-            <td>6068.KL</td>
-            <td>PCCS</td>
-            <td>Personal Goods</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="64700000.0">64.70M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/23)</td>
+            <td>偏弱/盘整 (0/9)</td>
             
         </tr>
         <tr>
@@ -1618,7 +1607,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="45900000.0">45.90M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
@@ -1629,7 +1618,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="225300000.0">225.30M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/12)</td>
+            <td>偏弱/盘整 (1/12)</td>
             
         </tr>
         <tr>
@@ -1640,7 +1629,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="56200000.0">56.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
@@ -1662,29 +1651,40 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="74100000.0">74.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
+            
+        </tr>
+        <tr>
+            <td>6963.KL</td>
+            <td>VS</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="908000000.0">908.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
             
         </tr>
         <tr>
             <td>7005.KL</td>
             <td>BIG</td>
             <td>Diversified Industrials</td>
-            <td data-sort="0.574999988079071">0.57</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="36200000.0">36.20M</td>
-            <td data-sort="20124.999582767487">20,125</td>
-            <td data-sort="0.030155542967306874">0.03%</td>
-            <td>偏弱/盘整 (1/9)</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
             
         </tr>
         <tr>
-            <td>7016.KL</td>
-            <td>CHUAN</td>
-            <td>Building Materials</td>
+            <td>7010.KL</td>
+            <td>PTT</td>
+            <td>Property</td>
             <td data-sort="nan">nan</td>
-            <td data-sort="46400000.0">46.40M</td>
+            <td data-sort="677900000.0">677.90M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
@@ -1695,7 +1695,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="15000000.0">15.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/20)</td>
+            <td>偏弱/盘整 (2/20)</td>
             
         </tr>
         <tr>
@@ -1717,7 +1717,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="24000000.0">24.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/16)</td>
+            <td>偏弱/盘整 (2/16)</td>
+            
+        </tr>
+        <tr>
+            <td>7033.KL</td>
+            <td>HIGHTEC</td>
+            <td>Industrial Engineering</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="80400000.0">80.40M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/16)</td>
             
         </tr>
         <tr>
@@ -1728,7 +1739,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="69200000.0">69.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/40)</td>
+            <td>偏弱/盘整 (0/40)</td>
             
         </tr>
         <tr>
@@ -1739,18 +1750,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="49700000.0">49.70M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            
-        </tr>
-        <tr>
-            <td>7096.KL</td>
-            <td>JOE</td>
-            <td>Auto Parts</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="19900000.0">19.90M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/16)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -1761,7 +1761,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="2423700000.0">2.42B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/49)</td>
+            <td>偏弱/盘整 (3/49)</td>
             
         </tr>
         <tr>
@@ -1783,7 +1783,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="64099999.99999999">64.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/16)</td>
+            <td>偏弱/盘整 (2/16)</td>
             
         </tr>
         <tr>
@@ -1794,7 +1794,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="62300000.0">62.30M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
+            
+        </tr>
+        <tr>
+            <td>7146.KL</td>
+            <td>AEM</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="9700000.0">9.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
             
         </tr>
         <tr>
@@ -1805,18 +1816,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="21000000.0">21.00M</td>
             <td data-sort="8084.999862313271">8,085</td>
             <td data-sort="-1.2720021311934293">-1.27%</td>
-            <td>偏弱/盘整 (4/41)</td>
-            
-        </tr>
-        <tr>
-            <td>7153.KL</td>
-            <td>KOSSAN</td>
-            <td>Health Care Equipment & Services</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="3171800000.0">3.17B</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/12)</td>
+            <td>偏弱/盘整 (3/41)</td>
             
         </tr>
         <tr>
@@ -1849,7 +1849,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="4447900000.0">4.45B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -1871,7 +1871,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="96700000.0">96.70M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
+            <td>偏弱/盘整 (3/31)</td>
             
         </tr>
         <tr>
@@ -1915,7 +1915,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="2692200000.0">2.69B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -1926,7 +1926,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="86600000.0">86.60M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/41)</td>
+            <td>偏弱/盘整 (3/41)</td>
             
         </tr>
         <tr>
@@ -1938,28 +1938,6 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/28)</td>
-            
-        </tr>
-        <tr>
-            <td>7211.KL</td>
-            <td>TAFI</td>
-            <td>Houshold Goods</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="263700000.0">263.70M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/41)</td>
-            
-        </tr>
-        <tr>
-            <td>7232.KL</td>
-            <td>RESINTC</td>
-            <td>Building Materials</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="87400000.0">87.40M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
             
         </tr>
         <tr>
@@ -1992,18 +1970,29 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="646800000.0">646.80M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/47)</td>
+            <td>偏弱/盘整 (6/47)</td>
+            
+        </tr>
+        <tr>
+            <td>7247.KL</td>
+            <td>SCGM</td>
+            <td>Packaging Materials</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="61000000.0">61.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/20)</td>
             
         </tr>
         <tr>
             <td>7248.KL</td>
             <td>SLP</td>
             <td>Packaging Materials</td>
-            <td data-sort="0.8550000190734863">0.86</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="275800000.0">275.80M</td>
-            <td data-sort="256.5000057220459">257</td>
-            <td data-sort="-0.08557747400334174">-0.09%</td>
-            <td>偏弱/盘整 (0/20)</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/20)</td>
             
         </tr>
         <tr>
@@ -2018,36 +2007,14 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
-            <td>7439.KL</td>
-            <td>TECGUAN</td>
-            <td>Agricultural Products</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="77000000.0">77.00M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/18)</td>
-            
-        </tr>
-        <tr>
-            <td>7528.KL</td>
-            <td>DKLS</td>
-            <td>Construction</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="130699999.99999999">130.70M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            
-        </tr>
-        <tr>
             <td>7609.KL</td>
             <td>AJIYA</td>
             <td>Building Materials</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.9599999785423279">0.96</td>
             <td data-sort="593900000.0">593.90M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
+            <td data-sort="11519.999742507935">11,520</td>
+            <td data-sort="-3.38686250006454">-3.39%</td>
+            <td>偏弱/盘整 (3/31)</td>
             
         </tr>
         <tr>
@@ -2058,7 +2025,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="61500000.0">61.50M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/47)</td>
+            <td>偏弱/盘整 (6/47)</td>
             
         </tr>
         <tr>
@@ -2091,18 +2058,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="333600000.0">333.60M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
-            <td>8362.KL</td>
-            <td>KYM</td>
-            <td>Packaging Materials</td>
+            <td>8486.KL</td>
+            <td>LIONPSIM</td>
+            <td>Industrial Services</td>
             <td data-sort="nan">nan</td>
-            <td data-sort="43500000.0">43.50M</td>
+            <td data-sort="64800000.0">64.80M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/20)</td>
+            <td>偏弱/盘整 (5/60)</td>
             
         </tr>
         <tr>
@@ -2117,28 +2084,6 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
-            <td>8591.KL</td>
-            <td>CRESBLD</td>
-            <td>Construction</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="99000000.0">99.00M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            
-        </tr>
-        <tr>
-            <td>8613.KL</td>
-            <td>ENRA</td>
-            <td>Energy, Infrastructure, Equipment & Services</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="166300000.0">166.30M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/26)</td>
-            
-        </tr>
-        <tr>
             <td>8893.KL</td>
             <td>MKLAND</td>
             <td>Property</td>
@@ -2146,7 +2091,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="175100000.0">175.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
@@ -2168,7 +2113,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="64900000.00000001">64.90M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/16)</td>
+            <td>偏弱/盘整 (2/16)</td>
             
         </tr>
         <tr>
@@ -2179,7 +2124,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="76700000.0">76.70M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
+            <td>偏弱/盘整 (2/28)</td>
             
         </tr>
         <tr>
@@ -2190,7 +2135,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="300100000.0">300.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/41)</td>
+            <td>偏弱/盘整 (3/41)</td>
             
         </tr>
         <tr>
@@ -2201,7 +2146,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="91600000.0">91.60M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
+            <td>偏弱/盘整 (3/31)</td>
             
         </tr>
         <tr>
@@ -2219,10 +2164,10 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td>9393.KL</td>
             <td>ITRONIC</td>
             <td>Technology Equipment</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.029999999329447746">0.03</td>
             <td data-sort="24800000.0">24.80M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
+            <td data-sort="761.9999829679728">762</td>
+            <td data-sort="-2.9541420600047505">-2.95%</td>
             <td>偏弱/盘整 (0/33)</td>
             
         </tr>
@@ -2230,10 +2175,10 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td>9423.KL</td>
             <td>CWG</td>
             <td>Consumer Services</td>
-            <td data-sort="0.13500000536441803">0.14</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="36700000.0">36.70M</td>
-            <td data-sort="7479.000297188759">7,479</td>
-            <td data-sort="-4.211006950069964">-4.21%</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/28)</td>
             
         </tr>
@@ -2245,7 +2190,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="303200000.0">303.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/16)</td>
+            <td>偏弱/盘整 (2/16)</td>
             
         </tr>
         <tr>
@@ -2255,8 +2200,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="0.17000000178813934">0.17</td>
             <td data-sort="68700000.0">68.70M</td>
             <td data-sort="9469.000099599361">9,469</td>
-            <td data-sort="1.14335866756364">1.14%</td>
-            <td>偏弱/盘整 (3/75)</td>
+            <td data-sort="1.1432031537274563">1.14%</td>
+            <td>偏弱/盘整 (1/75)</td>
             
         </tr>
         <tr>
@@ -2267,7 +2212,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="80400000.0">80.40M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/16)</td>
+            <td>偏弱/盘整 (2/16)</td>
+            
+        </tr>
+        <tr>
+            <td>9814.KL</td>
+            <td>BERTAM</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="62900000.0">62.90M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/97)</td>
             
         </tr>
         <tr>
@@ -2282,14 +2238,14 @@ function sortTable(tableId, colIndex, isNumeric) {
             
         </tr>
         <tr>
-            <td>9881.KL</td>
-            <td>LSTEEL</td>
-            <td>Metals</td>
+            <td>9938.KL</td>
+            <td>BRIGHT</td>
+            <td>Packaging Materials</td>
             <td data-sort="nan">nan</td>
-            <td data-sort="59500000.0">59.50M</td>
+            <td data-sort="34900000.0">34.90M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/47)</td>
+            <td>偏弱/盘整 (2/20)</td>
             
         </tr>
         <tr>
@@ -2300,7 +2256,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="88800000.0">88.80M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/49)</td>
+            <td>偏弱/盘整 (3/49)</td>
             
         </tr>
         <tr>
@@ -2311,7 +2267,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="64500000.0">64.50M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/41)</td>
+            <td>偏弱/盘整 (3/41)</td>
             
         </tr>
     </table>
@@ -2329,7 +2285,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/33)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0037.KL</td>
@@ -2339,8 +2295,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="325100000.0">325.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/31)</td>
-            <td data-sort="20261030">2026-10-30</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/31)</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0096.KL</td>
@@ -2351,7 +2307,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/7)</td>
-            <td data-sort="20261030">2026-10-30</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0097.KL</td>
@@ -2362,7 +2318,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/19)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0111.KL</td>
@@ -2373,7 +2329,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/33)</td>
-            <td data-sort="20261029">2026-10-29</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0112.KL</td>
@@ -2384,7 +2340,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/33)</td>
-            <td data-sort="20261029">2026-10-29</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0127.KL</td>
@@ -2395,7 +2351,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/19)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0131.KL</td>
@@ -2405,8 +2361,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="67099999.99999999">67.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/28)</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0133.KL</td>
@@ -2417,7 +2373,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/65)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0146.KL</td>
@@ -2428,7 +2384,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/33)</td>
-            <td data-sort="20261028">2026-10-28</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0149.KL</td>
@@ -2439,7 +2395,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/65)</td>
-            <td data-sort="20261027">2026-10-27</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0163.KL</td>
@@ -2450,7 +2406,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/12)</td>
-            <td data-sort="20261029">2026-10-29</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0173.KL</td>
@@ -2460,30 +2416,19 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="97800000.0">97.80M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/12)</td>
-            <td data-sort="20261029">2026-10-29</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/12)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0197.KL</td>
             <td>WEGMANS</td>
             <td>Houshold Goods</td>
-            <td data-sort="0.10499999672174454">0.10</td>
-            <td data-sort="52300000.0">52.30M</td>
-            <td data-sort="5260.499835759401">5,260</td>
-            <td data-sort="3.946647242793242">3.95%</td>
-            <td>偏弱/盘整 (4/41)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="1">1天前</td><td data-sort="-8.69565668088043">-8.70%</td>
-        </tr>
-        <tr>
-            <td>0200.KL</td>
-            <td>REVENUE</td>
-            <td>Digital Services</td>
             <td data-sort="nan">nan</td>
-            <td data-sort="45400000.0">45.40M</td>
+            <td data-sort="52300000.0">52.30M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/28)</td>
-            <td data-sort="20261022">2026-10-22</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/41)</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0201.KL</td>
@@ -2493,8 +2438,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="111600000.0">111.60M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/5)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/5)</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0208.KL</td>
@@ -2505,7 +2450,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/33)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0215.KL</td>
@@ -2516,7 +2461,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/14)</td>
-            <td data-sort="20261023">2026-10-23</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0225.KL</td>
@@ -2527,7 +2472,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/65)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0233.KL</td>
@@ -2538,7 +2483,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/14)</td>
-            <td data-sort="20261026">2026-10-26</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0236.KL</td>
+            <td>RAMSSOL</td>
+            <td>Software</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="335700000.0">335.70M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/30)</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0237.KL</td>
@@ -2548,8 +2504,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="74000000.0">74.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261027">2026-10-27</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0240.KL</td>
@@ -2559,19 +2515,19 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="526200000.00000006">526.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/16)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0241.KL</td>
             <td>TAGHILL</td>
             <td>Construction</td>
-            <td data-sort="0.07000000029802322">0.07</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="101200000.0">101.20M</td>
-            <td data-sort="1400.0000059604645">1,400</td>
-            <td data-sort="5.141354889289617">5.14%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="1">1天前</td><td data-sort="0.0">0.00%</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0245.KL</td>
@@ -2581,8 +2537,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="2500500000.0">2.50B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0262.KL</td>
@@ -2593,7 +2549,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/14)</td>
-            <td data-sort="20261030">2026-10-30</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0265.KL</td>
+            <td>INFOM</td>
+            <td>Technology Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="962000000.0">962.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/33)</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0270.KL</td>
@@ -2604,7 +2571,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/65)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0280.KL</td>
@@ -2615,18 +2582,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/28)</td>
-            <td data-sort="20261027">2026-10-27</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0281.KL</td>
             <td>DAY3</td>
             <td>Consumer Services</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.12999999523162842">0.13</td>
             <td data-sort="83300000.0">83.30M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
+            <td data-sort="12.999999523162842">13</td>
+            <td data-sort="6.187918853830186">6.19%</td>
             <td>偏弱/盘整 (3/28)</td>
-            <td data-sort="20261028">2026-10-28</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="3">3天前</td><td data-sort="0.0">0.00%</td>
         </tr>
         <tr>
             <td>0291.KL</td>
@@ -2637,18 +2604,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (5/60)</td>
-            <td data-sort="20261027">2026-10-27</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
-        </tr>
-        <tr>
-            <td>0292.KL</td>
-            <td>JTGROUP</td>
-            <td>Construction</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="423000000.0">423.00M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261022">2026-10-22</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0303.KL</td>
@@ -2659,7 +2615,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/12)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0310.KL</td>
@@ -2669,19 +2625,19 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="584000000.0">584.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0317.KL</td>
             <td>EPB</td>
             <td>Industrial Services</td>
-            <td data-sort="0.23000000417232513">0.23</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="85600000.0">85.60M</td>
-            <td data-sort="14582.000264525414">14,582</td>
-            <td data-sort="2.538919234745181">2.54%</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (5/60)</td>
-            <td data-sort="20261102">2026-11-02</td><td data-sort="2">2天前</td><td data-sort="2.2222267845531776">2.22%</td>
+            <td data-sort="20261102">2026-11-02</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0318.KL</td>
@@ -2692,7 +2648,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/14)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0330.KL</td>
@@ -2703,7 +2659,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/28)</td>
-            <td data-sort="20261030">2026-10-30</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261030">2026-10-30</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>0337.KL</td>
+            <td>SET</td>
+            <td>Industrial Materials, Components & Equipment</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="240200000.0">240.20M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/65)</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0340.KL</td>
@@ -2714,7 +2681,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/14)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0342.KL</td>
@@ -2725,7 +2692,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/28)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0356.KL</td>
@@ -2747,7 +2714,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/14)</td>
-            <td data-sort="20261026">2026-10-26</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0375.KL</td>
@@ -2758,18 +2725,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/33)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
-        </tr>
-        <tr>
-            <td>0387.KL</td>
-            <td>GHS</td>
-            <td>Food & Beverages</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="90000000.0">90.00M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (7/49)</td>
-            <td data-sort="20261016">2026-10-16</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0389.KL</td>
@@ -2780,7 +2736,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (5/60)</td>
-            <td data-sort="20261027">2026-10-27</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0390.KL</td>
@@ -2791,7 +2747,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (5/60)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>0396.KL</td>
@@ -2801,8 +2757,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="215000000.0">215.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261028">2026-10-28</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>1287.KL</td>
@@ -2812,8 +2768,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="1172700000.0">1.17B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/31)</td>
-            <td data-sort="20261030">2026-10-30</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/31)</td>
+            <td data-sort="20261030">2026-10-30</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>2127.KL</td>
@@ -2824,18 +2780,29 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/65)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>2143.KL</td>
             <td>ECM</td>
             <td>Other Financials</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.2199999988079071">0.22</td>
             <td data-sort="101500000.0">101.50M</td>
+            <td data-sort="2199.999988079071">2,200</td>
+            <td data-sort="2.977594809545423">2.98%</td>
+            <td>偏弱/盘整 (2/18)</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="1">1天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>2305.KL</td>
+            <td>AYER</td>
+            <td>Property</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="542700000.0">542.70M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/18)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/97)</td>
+            <td data-sort="20261030">2026-10-30</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>2607.KL</td>
@@ -2845,8 +2812,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="197800000.0">197.80M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/40)</td>
-            <td data-sort="20261026">2026-10-26</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/40)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>2755.KL</td>
@@ -2855,20 +2822,9 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="1.7100000381469727">1.71</td>
             <td data-sort="425000000.0">425.00M</td>
             <td data-sort="12996.000289916992">12,996</td>
-            <td data-sort="-0.2947090477198301">-0.29%</td>
-            <td>偏弱/盘整 (4/41)</td>
+            <td data-sort="-0.29516766865275834">-0.30%</td>
+            <td>偏弱/盘整 (3/41)</td>
             <td data-sort="20261030">2026-10-30</td><td data-sort="1">1天前</td><td data-sort="-4.999995364083061">-5.00%</td>
-        </tr>
-        <tr>
-            <td>3298.KL</td>
-            <td>HEXZA</td>
-            <td>Chemicals</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="224100000.0">224.10M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/24)</td>
-            <td data-sort="20261022">2026-10-22</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>3816.KL</td>
@@ -2879,7 +2835,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (2/32)</td>
-            <td data-sort="20261102">2026-11-02</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261102">2026-11-02</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>4359.KL</td>
@@ -2890,18 +2846,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/19)</td>
-            <td data-sort="20261029">2026-10-29</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>4596.KL</td>
             <td>SAPRES</td>
             <td>Property</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.17000000178813934">0.17</td>
             <td data-sort="50600000.0">50.60M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
-            <td data-sort="20261029">2026-10-29</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="10472.000110149384">10,472</td>
+            <td data-sort="-10.71817323512548">-10.72%</td>
+            <td>偏弱/盘整 (3/97)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="3">3天前</td><td data-sort="-19.047615668670826">-19.05%</td>
         </tr>
         <tr>
             <td>4634.KL</td>
@@ -2912,18 +2868,29 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (2/32)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>4707.KL</td>
+            <td>NESTLE</td>
+            <td>Food & Beverages</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="21500000000.0">21.50B</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/49)</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5009.KL</td>
             <td>WTHORSE</td>
             <td>Building Materials</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.5">0.50</td>
             <td data-sort="121200000.0">121.20M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
-            <td data-sort="20261002">2026-10-02</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="13250.0">13,250</td>
+            <td data-sort="4.745157036129394">4.75%</td>
+            <td>偏弱/盘整 (3/31)</td>
+            <td data-sort="20261002">2026-10-02</td><td data-sort="8">8天前</td><td data-sort="0.0">0.00%</td>
         </tr>
         <tr>
             <td>5073.KL</td>
@@ -2933,19 +2900,30 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="434200000.0">434.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
-            <td data-sort="20261030">2026-10-30</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/97)</td>
+            <td data-sort="20261030">2026-10-30</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5081.KL</td>
             <td>EIG</td>
             <td>Personal Goods</td>
-            <td data-sort="0.18000000715255737">0.18</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="46300000.0">46.30M</td>
-            <td data-sort="3564.000141620636">3,564</td>
-            <td data-sort="-4.950218817613726">-4.95%</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (1/23)</td>
-            <td data-sort="20261009">2026-10-09</td><td data-sort="5">5天前</td><td data-sort="-9.999997764825855">-10.00%</td>
+            <td data-sort="20261009">2026-10-09</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+        </tr>
+        <tr>
+            <td>5133.KL</td>
+            <td>PENERGY</td>
+            <td>Energy, Infrastructure, Equipment & Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="218800000.0">218.80M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/26)</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5145.KL</td>
@@ -2956,7 +2934,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/2)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5161.KL</td>
@@ -2967,7 +2945,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/33)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5168.KL</td>
@@ -2978,7 +2956,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/12)</td>
-            <td data-sort="20261023">2026-10-23</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5209.KL</td>
@@ -2989,7 +2967,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/9)</td>
-            <td data-sort="20261102">2026-11-02</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261102">2026-11-02</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5272.KL</td>
@@ -3000,7 +2978,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/9)</td>
-            <td data-sort="20261027">2026-10-27</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5313.KL</td>
@@ -3010,8 +2988,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="1942100000.0">1.94B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/97)</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5317.KL</td>
@@ -3022,7 +3000,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/65)</td>
-            <td data-sort="20261023">2026-10-23</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5329.KL</td>
@@ -3032,8 +3010,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="490000000.0">490.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261023">2026-10-23</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5398.KL</td>
@@ -3043,8 +3021,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="29200000000.0">29.20B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5555.KL</td>
@@ -3055,18 +3033,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/12)</td>
-            <td data-sort="20261027">2026-10-27</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>5592.KL</td>
             <td>GCE</td>
             <td>Travel, Leisure & Hospitality</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.36000001430511475">0.36</td>
             <td data-sort="62100000.0">62.10M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/31)</td>
-            <td data-sort="20261028">2026-10-28</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="2196.0000872612">2,196</td>
+            <td data-sort="-6.8324684086761565">-6.83%</td>
+            <td>偏弱/盘整 (2/31)</td>
+            <td data-sort="20261028">2026-10-28</td><td data-sort="6">6天前</td><td data-sort="-14.285708203607486">-14.29%</td>
         </tr>
         <tr>
             <td>5843.KL</td>
@@ -3076,8 +3054,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="290200000.0">290.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (1/9)</td>
-            <td data-sort="20261027">2026-10-27</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (0/9)</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>6173.KL</td>
@@ -3087,19 +3065,19 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="56200000.0">56.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
-            <td data-sort="20261029">2026-10-29</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/97)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7016.KL</td>
             <td>CHUAN</td>
             <td>Building Materials</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.2849999964237213">0.28</td>
             <td data-sort="46400000.0">46.40M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
-            <td data-sort="20261022">2026-10-22</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="2336.9999706745148">2,337</td>
+            <td data-sort="-1.7115424132783756">-1.71%</td>
+            <td>偏弱/盘整 (3/31)</td>
+            <td data-sort="20261022">2026-10-22</td><td data-sort="8">8天前</td><td data-sort="-8.064517989739157">-8.06%</td>
         </tr>
         <tr>
             <td>7017.KL</td>
@@ -3109,8 +3087,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="15000000.0">15.00M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/20)</td>
-            <td data-sort="20261023">2026-10-23</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/20)</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7053.KL</td>
@@ -3124,26 +3102,26 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="20261002">2026-10-02</td><td data-sort="3">3天前</td><td data-sort="-0.7352934086817846">-0.74%</td>
         </tr>
         <tr>
-            <td>7086.KL</td>
-            <td>ABLEGRP</td>
-            <td>Building Materials</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="26400000.0">26.40M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
-            <td data-sort="20261014">2026-10-14</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
-        </tr>
-        <tr>
             <td>7099.KL</td>
             <td>MAYU</td>
             <td>Metals</td>
             <td data-sort="0.12999999523162842">0.13</td>
             <td data-sort="62700000.0">62.70M</td>
             <td data-sort="7929.9997091293335">7,930</td>
-            <td data-sort="5.005916765146286">5.01%</td>
-            <td>偏弱/盘整 (7/47)</td>
+            <td data-sort="5.006316251878443">5.01%</td>
+            <td>偏弱/盘整 (6/47)</td>
             <td data-sort="20261005">2026-10-05</td><td data-sort="9">9天前</td><td data-sort="0.0">0.00%</td>
+        </tr>
+        <tr>
+            <td>7117.KL</td>
+            <td>CJCEN</td>
+            <td>Transportation & Logistics Services</td>
+            <td data-sort="nan">nan</td>
+            <td data-sort="98000000.0">98.00M</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/32)</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7145.KL</td>
@@ -3153,8 +3131,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="62300000.0">62.30M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261026">2026-10-26</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7153.KL</td>
@@ -3165,7 +3143,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/12)</td>
-            <td data-sort="20261023">2026-10-23</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="10">10天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7160.KL</td>
@@ -3176,7 +3154,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/33)</td>
-            <td data-sort="20261026">2026-10-26</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7163.KL</td>
@@ -3187,7 +3165,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (5/60)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7168.KL</td>
@@ -3198,7 +3176,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (1/23)</td>
-            <td data-sort="20261023">2026-10-23</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261023">2026-10-23</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7174.KL</td>
@@ -3209,7 +3187,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/18)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7176.KL</td>
@@ -3231,7 +3209,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/12)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7195.KL</td>
@@ -3241,19 +3219,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="2692200000.0">2.69B</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/75)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
-        </tr>
-        <tr>
-            <td>7232.KL</td>
-            <td>RESINTC</td>
-            <td>Building Materials</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="87400000.0">87.40M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
-            <td data-sort="20261029">2026-10-29</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (1/75)</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7233.KL</td>
@@ -3264,7 +3231,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (3/65)</td>
-            <td data-sort="20261027">2026-10-27</td><td data-sort="7">7天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261027">2026-10-27</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7239.KL</td>
@@ -3274,19 +3241,19 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="139800000.0">139.80M</td>
             <td data-sort="662.9999756813049">663</td>
             <td data-sort="-5.262559060271523">-5.26%</td>
-            <td>偏弱/盘整 (2/31)</td>
+            <td>偏弱/盘整 (3/31)</td>
             <td data-sort="20261008">2026-10-08</td><td data-sort="6">6天前</td><td data-sort="-14.285719899966379">-14.29%</td>
         </tr>
         <tr>
             <td>7248.KL</td>
             <td>SLP</td>
             <td>Packaging Materials</td>
-            <td data-sort="0.8550000190734863">0.86</td>
+            <td data-sort="nan">nan</td>
             <td data-sort="275800000.0">275.80M</td>
-            <td data-sort="256.5000057220459">257</td>
-            <td data-sort="-0.08557747400334174">-0.09%</td>
-            <td>偏弱/盘整 (0/20)</td>
-            <td data-sort="20260929">2026-09-29</td><td data-sort="7">7天前</td><td data-sort="-2.840906397000803">-2.84%</td>
+            <td data-sort="nan">数据缺失</td>
+            <td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/20)</td>
+            <td data-sort="20260929">2026-09-29</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>7293.KL</td>
@@ -3297,29 +3264,18 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/26)</td>
-            <td data-sort="20261026">2026-10-26</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
-        </tr>
-        <tr>
-            <td>7439.KL</td>
-            <td>TECGUAN</td>
-            <td>Agricultural Products</td>
-            <td data-sort="nan">nan</td>
-            <td data-sort="77000000.0">77.00M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/18)</td>
-            <td data-sort="20261021">2026-10-21</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>8362.KL</td>
             <td>KYM</td>
             <td>Packaging Materials</td>
-            <td data-sort="nan">nan</td>
+            <td data-sort="0.2849999964237213">0.28</td>
             <td data-sort="43500000.0">43.50M</td>
-            <td data-sort="nan">数据缺失</td>
-            <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (0/20)</td>
-            <td data-sort="20261008">2026-10-08</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="142.49999821186066">142</td>
+            <td data-sort="3.285828818489404">3.29%</td>
+            <td>偏弱/盘整 (2/20)</td>
+            <td data-sort="20261008">2026-10-08</td><td data-sort="8">8天前</td><td data-sort="-8.064517989739157">-8.06%</td>
         </tr>
         <tr>
             <td>8893.KL</td>
@@ -3329,8 +3285,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="175100000.0">175.10M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (4/97)</td>
-            <td data-sort="20261026">2026-10-26</td><td data-sort="8">8天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/97)</td>
+            <td data-sort="20261026">2026-10-26</td><td data-sort="9">9天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>8966.KL</td>
@@ -3341,7 +3297,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (1/23)</td>
-            <td data-sort="20261103">2026-11-03</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261103">2026-11-03</td><td data-sort="3">3天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>9237.KL</td>
@@ -3351,8 +3307,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="91600000.0">91.60M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (2/31)</td>
-            <td data-sort="20261030">2026-10-30</td><td data-sort="4">4天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (3/31)</td>
+            <td data-sort="20261105">2026-11-05</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>9334.KL</td>
@@ -3363,7 +3319,7 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
             <td>偏弱/盘整 (0/19)</td>
-            <td data-sort="20261104">2026-11-04</td><td data-sort="1">1天前</td><td data-sort="nan">nan%</td>
+            <td data-sort="20261104">2026-11-04</td><td data-sort="2">2天前</td><td data-sort="nan">nan%</td>
         </tr>
         <tr>
             <td>9466.KL</td>
@@ -3373,8 +3329,8 @@ function sortTable(tableId, colIndex, isNumeric) {
             <td data-sort="303200000.0">303.20M</td>
             <td data-sort="nan">数据缺失</td>
             <td data-sort="nan">nan%</td>
-            <td>偏弱/盘整 (3/16)</td>
-            <td data-sort="20261029">2026-10-29</td><td data-sort="5">5天前</td><td data-sort="nan">nan%</td>
+            <td>偏弱/盘整 (2/16)</td>
+            <td data-sort="20261029">2026-10-29</td><td data-sort="6">6天前</td><td data-sort="nan">nan%</td>
         </tr>
     </table>
 </body>
